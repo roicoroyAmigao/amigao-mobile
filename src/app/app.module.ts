@@ -26,10 +26,10 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ReviewPageComponent } from './checkout/components/review-page/review-page.component';
 import { DeliveryPageComponent } from './checkout/components/delivery-page/delivery-page.component';
-import { FormsHomeComponent } from './checkout/components/forms-home/forms-home.component';
 import { PaymentPageComponent } from './checkout/components/payment-page/payment-page.component';
 import { ShippingPageComponent } from './checkout/components/shippping-page/shipping-page.component';
 import { AddressFormComponent } from './shared/address-form/address-form.component';
+import { HomePage } from './checkout/home/home.page';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -39,10 +39,10 @@ export function createTranslateLoader(http: HttpClient) {
     AppComponent,
     AddressFormComponent,
     DeliveryPageComponent,
-    FormsHomeComponent,
     ShippingPageComponent,
     PaymentPageComponent,
-    ReviewPageComponent
+    ReviewPageComponent,
+    HomePage
   ],
   imports: [
     BrowserModule,

@@ -1,9 +1,13 @@
+/* eslint-disable @typescript-eslint/dot-notation */
+/* eslint-disable prefer-arrow/prefer-arrow-functions */
 import { FormGroup } from '@angular/forms';
 
 import { DeliveryPageFormValue } from '../models/delivery-page-form-value.interface';
 
 export function deliveryPageFromValidator(deliveryPageFrom: FormGroup): { [key: string]: any } | null {
   const formValue: DeliveryPageFormValue = deliveryPageFrom.value;
+  console.log(formValue);
+
   return deliveryPageFromValueValidator(formValue);
 }
 
@@ -13,6 +17,9 @@ export function deliveryPageFromValueValidator(deliveryPageFromValue: DeliveryPa
     errors['shippingAddress'] = true;
   }
   if (deliveryPageFromValue.createAccount) {
+    if (!deliveryPageFromValue.isShippingSame && !deliveryPageFromValue.shippingAddress) {
+      errors['shippingAddress'] = true;
+    }
     if (!deliveryPageFromValue.account.password) {
       errors['password'] = true;
     }

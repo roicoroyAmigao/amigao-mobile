@@ -16,14 +16,15 @@ const routes: Routes = [
     path: '',
     component: HomePage,
     children: [
-      {
-        path: '',
-        redirectTo: RoutePath.home,
-        pathMatch: 'full'
-      },
+      // {
+      //   path: '',
+      //   redirectTo: RoutePath.home,
+      //   pathMatch: 'full'
+      // },
       {
         path: RoutePath.home,
-        loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+        // loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+        component: HomePage
       },
       {
         path: RoutePath.delivery,

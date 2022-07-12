@@ -1,10 +1,10 @@
 <ion-content>
     <form [formGroup]="deliveryPageForm" ngxsForm="forms.deliveryForm" (ngSubmit)="onSubmit()">
         <div class="mb3">
-            <button mat-raised-button color="secondary" type="button" (click)="onReset()">
+            <ion-button mat-raised-button color="secondary" type="button" (click)="onReset()">
                 {{ 'COMMON.RESET' | translate }}
                 <mat-icon aria-hidden="true">clear</mat-icon>
-            </button>
+            </ion-button>
         </div>
 
         <mat-radio-group [attr.aria-label]="'DELIVERY.USER_CHECKOUT_OPTIONS' | translate"
@@ -87,11 +87,15 @@
             </mat-card-content>
         </mat-card>
 
-        <div class="mt3 tr">
-            <button mat-raised-button color="primary" type="submit">
-                {{ 'COMMON.NEXT' | translate }}
-                <mat-icon aria-hidden="true">navigate_next</mat-icon>
-            </button>
-        </div>
+        <ion-item>
+            <ion-buttons slot="end">
+                <ion-button color="primary" type="submit">
+                    {{ 'COMMON.NEXT' | translate }}
+                    <ion-icon name="arrow-forward"></ion-icon>
+                </ion-button>
+            </ion-buttons>
+        </ion-item>
+
     </form>
+
 </ion-content>

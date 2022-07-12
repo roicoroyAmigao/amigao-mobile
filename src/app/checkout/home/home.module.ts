@@ -28,6 +28,6 @@ import { FormsState } from 'src/app/shared/store/forms.state';
     SharedModule,
     MaterialModule
   ],
-  declarations: [HomePage]
+  declarations: []
 })
 export class HomePageModule {}

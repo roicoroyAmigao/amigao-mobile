@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <nav mat-tab-nav-bar>
-      <a mat-tab-link [routerLink]="['/welcome']" routerLinkActive #rla1="routerLinkActive" [active]="rla1.isActive">
+      <a mat-tab-link (click)="welcomePage()" routerLinkActive #rla1="routerLinkActive" [active]="rla1.isActive">
         {{ 'Home' | translate }}
       </a>
       <a mat-tab-link [routerLink]="['/checkout/delivery']" routerLinkActive #rla1="routerLinkActive"
@@ -19,12 +19,42 @@
     </nav>
   </ion-toolbar>
 </ion-header>
+<ion-toolbar>
+  <ion-segment value="all" color="tertiary" scrollable="true" mode="ios" [(ngModel)]="segment"
+    (ionChange)="segmentChanged($event)">
 
-<ion-content>
+    <ion-segment-button value="all">
+      <ion-label>
+        {{ 'Home' | translate }}
+      </ion-label>
+    </ion-segment-button>
 
-  <router-outlet></router-outlet>
+    <ion-segment-button value="delivery" [routerLink]="['/checkout/delivery']">
+      <ion-label>
+        {{ 'TABS.DELIVERY' | translate }}
+      </ion-label>
+    </ion-segment-button>
 
-  <ion-button (click)="welcomePage()" expand="block" fill="clear" shape="round">
-    back to welcome
-  </ion-button>
+    <ion-segment-button value="shipping" [routerLink]="['/checkout/shipping']"
+      [disabled]="(isDeliveryFormValid$ | async) === false">
+      <ion-label>
+        {{ 'TABS.SHIPPING' | translate }}
+      </ion-label>
+    </ion-segment-button>
+
+    <ion-segment-button value="payment" [routerLink]="['/checkout/payment']"
+      [disabled]="(isPaymentEnabled$ | async) === false">
+      <ion-label>
+        {{ 'TABS.PAYMENT' | translate }}
+      </ion-label>
+    </ion-segment-button>
+
+  </ion-segment>
+</ion-toolbar>
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-router-outlet></ion-router-outlet>
+    </ion-row>
+  </ion-grid>
 </ion-content>
