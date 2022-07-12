@@ -4,7 +4,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { RoutePath } from 'src/app/models/route-path.enum';
-import { shippingMethods } from '../../models/shipping-methods.const';
+import { shippingMethods } from '../../../shared/models/shipping-methods.const';
 
 @Component({
   selector: 'afn-shipping-page',
@@ -31,7 +31,7 @@ export class ShippingPageComponent {
   onSubmit() {
     this.submitted = true;
     if (this.shippingPageForm.valid) {
-      this.router.navigate([RoutePath.payment]);
+      this.router.navigate(['checkout/' + RoutePath.payment]);
     }
   }
 }

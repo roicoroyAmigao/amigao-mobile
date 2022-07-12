@@ -1,12 +1,13 @@
+/* eslint-disable @angular-eslint/component-selector */
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { StateReset } from 'ngxs-reset-plugin';
 
 import { addressFormValueToHTML } from 'src/app/shared/address-form/address-form-value.interface';
-import { FormsStateModel } from '../../models/froms-state-model.interface';
-import { ShippingMethod } from '../../models/shipping-method.interface';
-import { shippingMethods } from '../../models/shipping-methods.const';
-import { FormsState } from '../../store/forms.state';
+import { FormsStateModel } from '../../../shared/models/froms-state-model.interface';
+import { ShippingMethod } from '../../../shared/models/shipping-method.interface';
+import { shippingMethods } from '../../../shared/models/shipping-methods.const';
+import { FormsState } from '../../../shared/store/forms.state';
 
 @Component({
   selector: 'afn-review-page',

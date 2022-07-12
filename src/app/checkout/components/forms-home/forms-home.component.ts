@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 
-import * as FormsSelectors from '../../store/forms.selectors';
+import * as FormsSelectors from '../../../shared/store/forms.selectors';
 
 @Component({
   selector: 'afn-forms-home',

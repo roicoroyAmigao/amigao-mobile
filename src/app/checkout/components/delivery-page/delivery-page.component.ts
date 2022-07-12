@@ -8,7 +8,7 @@ import { filter } from 'rxjs/operators';
 import { RoutePath } from 'src/app/models/route-path.enum';
 import { FormGroupErrorStateMatcher } from 'src/app/shared/form-group-error-state-matcher';
 import { passwordRegex } from 'src/app/shared/regexes.const';
-import { deliveryPageFromValidator } from '../../services/delivery-page-form.validator';
+import { deliveryPageFromValidator } from '../../../shared/services/delivery-page-form.validator';
 
 @Component({
   selector: 'afn-delivery-page',
@@ -74,7 +74,7 @@ export class DeliveryPageComponent implements OnInit, OnDestroy {
     this.submitted = true;
     this.deliveryPageForm.markAllAsTouched();
     if (this.deliveryPageForm.valid) {
-      this.router.navigate([RoutePath.shipping]);
+      this.router.navigate(['checkout/' + RoutePath.shipping]);
     }
   }
 

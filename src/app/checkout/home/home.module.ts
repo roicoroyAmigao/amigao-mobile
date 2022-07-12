@@ -4,22 +4,23 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { CheckoutPageRoutingModule } from './checkout-routing.module';
+import { HomePageRoutingModule } from './home-routing.module';
 
+import { HomePage } from './home.page';
+import { TranslateModule } from '@ngx-translate/core';
 import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 import { NgxsModule } from '@ngxs/store';
 import { NgxMaskModule } from 'ngx-mask';
-import { TranslateModule } from '@ngx-translate/core';
-import { FormsState } from '../shared/store/forms.state';
-import { SharedModule } from '../shared/shared.module';
-import { MaterialModule } from '../material.module';
+import { MaterialModule } from 'src/app/material.module';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { FormsState } from 'src/app/shared/store/forms.state';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CheckoutPageRoutingModule,
+    HomePageRoutingModule,
     NgxMaskModule.forChild(),
     NgxsModule.forFeature([FormsState]),
     NgxsFormPluginModule,
@@ -27,7 +28,6 @@ import { MaterialModule } from '../material.module';
     SharedModule,
     MaterialModule
   ],
-  declarations: [
-  ]
+  declarations: [HomePage]
 })
-export class CheckoutPageModule { }
+export class HomePageModule {}

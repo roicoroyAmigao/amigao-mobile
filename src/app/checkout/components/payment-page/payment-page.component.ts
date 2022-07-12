@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/component-selector */
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -26,7 +27,7 @@ export class PaymentPageComponent implements OnInit, OnDestroy {
 
   private subscription = new Subscription();
 
-  constructor(private fb: FormBuilder, private router: Router) {}
+  constructor(private fb: FormBuilder, private router: Router) { }
 
   ngOnInit() {
     this.subscription.add(
@@ -44,7 +45,7 @@ export class PaymentPageComponent implements OnInit, OnDestroy {
     this.submitted = true;
     this.paymentPageForm.markAllAsTouched();
     if (this.paymentPageForm.valid) {
-      this.router.navigate([RoutePath.review]);
+      this.router.navigate(['checkout/' + RoutePath.review]);
     }
   }
 }

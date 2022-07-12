@@ -1,8 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <nav mat-tab-nav-bar>
-      <a mat-tab-link [routerLink]="['/welcome']" routerLinkActive #rla1="routerLinkActive"
-        [active]="rla1.isActive">
+      <a mat-tab-link [routerLink]="['/welcome']" routerLinkActive #rla1="routerLinkActive" [active]="rla1.isActive">
         {{ 'Home' | translate }}
       </a>
       <a mat-tab-link [routerLink]="['/checkout/delivery']" routerLinkActive #rla1="routerLinkActive"
@@ -20,8 +19,12 @@
     </nav>
   </ion-toolbar>
 </ion-header>
+
 <ion-content>
 
   <router-outlet></router-outlet>
 
+  <ion-button (click)="welcomePage()" expand="block" fill="clear" shape="round">
+    back to welcome
+  </ion-button>
 </ion-content>
