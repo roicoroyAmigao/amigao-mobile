@@ -1,0 +1,7 @@
+{
+  "name": "amigao-mobile",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
