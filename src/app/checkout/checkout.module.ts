@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -11,23 +11,28 @@ import { NgxsModule } from '@ngxs/store';
 import { NgxMaskModule } from 'ngx-mask';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsState } from '../shared/store/forms.state';
-import { SharedModule } from '../shared/shared.module';
 import { MaterialModule } from '../material.module';
+import { NgxStripeModule } from 'ngx-stripe';
+import { FormComponentsModule } from './components/form.components.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    RouterModule,
     CheckoutPageRoutingModule,
-    NgxMaskModule.forChild(),
+    TranslateModule,
+    MaterialModule,
+    ReactiveFormsModule,
     NgxsModule.forFeature([FormsState]),
     NgxsFormPluginModule,
-    TranslateModule,
-    SharedModule,
-    MaterialModule
+    FormComponentsModule
+  ],
+  exports: [
   ],
   declarations: [
-  ]
+  ],
 })
 export class CheckoutPageModule { }

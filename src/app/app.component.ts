@@ -1,4 +1,10 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
+import { Store } from '@ngxs/store';
+import { MedusaDataService } from './medusa-data.service';
+import { NavigationService } from './shared/services/navigation.service';
+import { CartService } from './shop/services/cart/cart.service';
 
 @Component({
   selector: 'app-root',
@@ -6,18 +12,31 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-
+  selectedIndex;
   public appPages = [
-    { title: 'Inbox', url: '/folder/Inbox', icon: 'mail' },
-    { title: 'Outbox', url: '/folder/Outbox', icon: 'paper-plane' },
-    { title: 'Favorites', url: '/folder/Favorites', icon: 'heart' },
-    { title: 'Archived', url: '/folder/Archived', icon: 'archive' },
-    { title: 'Trash', url: '/folder/Trash', icon: 'trash' },
-    { title: 'Spam', url: '/folder/Spam', icon: 'warning' },
+    { title: 'Welcome', url: '/welcome', icon: 'home' },
+    { title: 'Checkout', url: '/checkout', icon: 'paper-plane' },
   ];
 
 
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
-  constructor() { }
+  constructor(
+    public cart: CartService,
+    private router: Router,
+    public alertController: AlertController,
+    private store: Store,
+    private dataService: MedusaDataService,
+    private navigation: NavigationService
+  ) { }
+
+  ionViewWillEnter() {
+    this.cart.unseen = 0;
+    this.cart.getCartTotalQty();
+    this.cart.totalPrice();
+  }
+  async placeOrder(cart) {
+    let variantId;
+  }
+
 }

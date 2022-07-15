@@ -30,6 +30,8 @@ import { PaymentPageComponent } from './checkout/components/payment-page/payment
 import { ShippingPageComponent } from './checkout/components/shippping-page/shipping-page.component';
 import { AddressFormComponent } from './shared/address-form/address-form.component';
 import { HomePage } from './checkout/home/home.page';
+import { RegionFormComponent } from './shop/components/region-form/region-form.component';
+import { CartPage } from './shop/components/cart/cart.page';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -37,12 +39,7 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    AddressFormComponent,
-    DeliveryPageComponent,
-    ShippingPageComponent,
-    PaymentPageComponent,
-    ReviewPageComponent,
-    HomePage
+    CartPage
   ],
   imports: [
     BrowserModule,
@@ -69,7 +66,7 @@ export function createTranslateLoader(http: HttpClient) {
     NgxsReduxDevtoolsPluginModule.forRoot({ disabled: false }),
     NgxsStoragePluginModule.forRoot({ key: ['forms'] }),
     NgxStripeModule.forRoot(environment.STRIPE_KEY),
-    SharedModule,
+    // SharedModule,
     // CheckoutPageModule
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

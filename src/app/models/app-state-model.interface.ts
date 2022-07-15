@@ -1,4 +1,4 @@
-import { FormsStateModel } from '../shared/models/froms-state-model.interface';
+import { FormsStateModel } from '../shared/models/forms-state-model.interface';
 
 export interface AppStateModel {
   forms: FormsStateModel;

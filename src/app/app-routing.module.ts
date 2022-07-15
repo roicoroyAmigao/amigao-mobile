@@ -8,12 +8,12 @@ const routes: Routes = [
   // },
   {
     path: '',
-    redirectTo: 'checkout',
+    redirectTo: 'welcome',
     pathMatch: 'full'
   },
   {
     path: 'shop',
-    loadChildren: () => import('./shop/shop.module').then(m => m.TabsPageModule)
+    loadChildren: () => import('./shop/shop.module').then(m => m.ShopPageModule)
   },
   {
     path: 'checkout',
@@ -22,6 +22,10 @@ const routes: Routes = [
   {
     path: 'welcome',
     loadChildren: () => import('./welcome/welcome.module').then( m => m.WelcomePageModule)
+  },
+  {
+    path: 'product-details',
+    loadChildren: () => import('./shop/products-list/product-details/product-details.module').then( m => m.ProductDetailsPageModule)
   }
 ];
 @NgModule({

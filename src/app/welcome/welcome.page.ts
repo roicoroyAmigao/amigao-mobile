@@ -9,13 +9,14 @@ import { NavigationService } from '../shared/services/navigation.service';
 export class WelcomePage implements OnInit {
 
   constructor(
-    private navigation: NavigationService
+    private navigation: NavigationService,
   ) { }
-
   ngOnInit() {
   }
-
   goToCheckout(params){
     this.navigation.navigateForwardParams('checkout', params);
+  }
+  goToShop(){
+    this.navigation.navigateForward('shop/tabs/products-list');
   }
 }

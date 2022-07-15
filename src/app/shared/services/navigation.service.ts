@@ -21,7 +21,7 @@ export interface IInternalNavigationOptions {
 })
 export class NavigationService {
     constructor(
-        private navCtrl: NavController
+        public navCtrl: NavController
     ) { }
     async navigateForward(url: string) {
         await this.navCtrl.navigateForward(url, {
