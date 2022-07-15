@@ -10,7 +10,7 @@
       <ion-col size="6" size-lg="3" size-md="4" *ngFor="let p of vs.productsList.products">
         <ion-card class="ion-no-margin">
           <ion-card-content>
-            <ion-button expand="block" fill="clear" expand="full" (click)="productDetailsPage()">
+            <ion-button expand="block" fill="clear" expand="full" (click)="productDetailsPage(p)">
               <ion-img [src]="'assets/shapes.svg'"></ion-img>
             </ion-button>
             <ion-text color="primary">

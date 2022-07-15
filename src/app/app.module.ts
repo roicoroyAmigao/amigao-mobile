@@ -19,19 +19,10 @@ import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 import { NgxsModule } from '@ngxs/store';
 import { NgxsResetPluginModule } from 'ngxs-reset-plugin';
 
-import { SharedModule } from './shared/shared.module';
-import { CheckoutPageModule } from './checkout/checkout.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { ReviewPageComponent } from './checkout/components/review-page/review-page.component';
-import { DeliveryPageComponent } from './checkout/components/delivery-page/delivery-page.component';
-import { PaymentPageComponent } from './checkout/components/payment-page/payment-page.component';
-import { ShippingPageComponent } from './checkout/components/shippping-page/shipping-page.component';
-import { AddressFormComponent } from './shared/address-form/address-form.component';
-import { HomePage } from './checkout/home/home.page';
-import { RegionFormComponent } from './shop/components/region-form/region-form.component';
-import { CartPage } from './shop/components/cart/cart.page';
+import { ComponentsModule } from './shop/shared/components/components.module';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -39,7 +30,6 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    CartPage
   ],
   imports: [
     BrowserModule,
@@ -66,6 +56,7 @@ export function createTranslateLoader(http: HttpClient) {
     NgxsReduxDevtoolsPluginModule.forRoot({ disabled: false }),
     NgxsStoragePluginModule.forRoot({ key: ['forms'] }),
     NgxStripeModule.forRoot(environment.STRIPE_KEY),
+    ComponentsModule
     // SharedModule,
     // CheckoutPageModule
   ],

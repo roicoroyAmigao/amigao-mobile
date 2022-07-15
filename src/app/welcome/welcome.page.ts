@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationService } from '../shared/services/navigation.service';
+import { NavigationService } from '../checkout/shared/services/navigation.service';
+
 
 @Component({
   selector: 'app-welcome',

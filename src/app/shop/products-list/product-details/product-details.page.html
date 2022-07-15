@@ -1,9 +1,27 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>product-details</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="productsListPage()">
+        <ion-icon slot="start" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
+  <form #form [formGroup]="productForm" ngxsForm="forms.productForm">
+    <ion-list formGroupName="variant" class="ion--text-center">
+      <ion-input type="text" formControlName="varianId"></ion-input>
+    </ion-list>
+
+    <ion-button (click)="submitForm()" expand="block" fill="clear" shape="round">
+      Click me
+    </ion-button>
+  </form>
+
+
+  <ion-button (click)="addToCart()" expand="block" fill="clear" shape="round">
+    Add to Cart
+  </ion-button>
 </ion-content>

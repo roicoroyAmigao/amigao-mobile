@@ -4,7 +4,7 @@ import { Select } from '@ngxs/store';
 
 import { Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { FormsState } from '../shared/store/forms.state';
+import { FormsState } from '../checkout/shared/store/forms.state';
 
 export interface ICartStateModel {
     medusaFullCart: object;

@@ -3,8 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { IonSlides, NavController } from '@ionic/angular';
 import { Store } from '@ngxs/store';
 import { Observable, Subscription } from 'rxjs';
-import { NavigationService } from 'src/app/shared/services/navigation.service';
-import * as FormsSelectors from '../../shared/store/forms.selectors';
+import { NavigationService } from '../shared/services/navigation.service';
+import * as FormsSelectors from '../shared/store/forms.selectors';
 
 @Component({
   selector: 'app-home',

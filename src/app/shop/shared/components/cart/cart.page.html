@@ -1,0 +1,59 @@
+<ion-content clas="ion-margin">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+  
+        <!-- <div *ngIf="cart.items.length < 1">
+          <img src="assets/images/empty-cart.svg" />
+          <h1>Oops!</h1>
+        </div> -->
+  
+        <!-- <ion-list *ngIf="cart.items.length > 0">
+          <ion-row *ngFor="let product of cart.items;let i = index;" class="ion-no-padding">
+            <ion-col size="3">
+              <img src="{{product.imgurl || 'assets/images/products.svg'}}" />
+            </ion-col>
+            <ion-col size="9">
+              <h4 class="brand">
+                {{ product?.name }}
+                <span data-cy="rm-item" (click)="cart.removeItem(i)">
+                  <ion-icon name="close"></ion-icon>
+                </span>
+              </h4>
+              <h5 class="amount">{{ product?.price | currency: 'USD'}}</h5>
+              <ion-row class="left">
+                <ion-col size="12">
+                  <p class="ion-no-margin">
+                    Quantity
+                  </p>
+                  <ion-text>
+                    <ion-icon (click)="cart.decreaseCartQty(i)" name="remove-circle"></ion-icon>
+                    {{ product['cartQuantity'] }}
+                    <ion-icon (click)="cart.increaseCartQty(i)" name="add-circle"></ion-icon>
+                  </ion-text>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </ion-list> -->
+  
+      </ion-col>
+  
+      <ion-col class="button-col">
+        <!-- <div>
+          <h2 class="heading">Order Info</h2>
+          <ion-text>
+            Total Quantity: {{ cart?.total_cart_qty }}
+          </ion-text>
+          <ion-text>
+            Total Price: {{ cart?.total_price | currency: 'USD' }}
+          </ion-text>
+        </div> -->
+        <ion-button color="danger" expand="full" (click)="placeOrder('cart')">
+          Place Order
+        </ion-button>
+      </ion-col>
+  
+    </ion-row>
+  </ion-grid>
+</ion-content>

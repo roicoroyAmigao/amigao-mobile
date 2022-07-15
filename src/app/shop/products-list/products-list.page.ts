@@ -2,18 +2,13 @@
 /* eslint-disable @angular-eslint/component-selector */
 import { Component, OnInit } from '@angular/core';
 import { IonRouterOutlet, ModalController, ActionSheetController, AlertController } from '@ionic/angular';
-import { Select, Store } from '@ngxs/store';
+import { Store } from '@ngxs/store';
 import { Observable, Subscription } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { NavigationService } from 'src/app/checkout/shared/services/navigation.service';
+import { FormActions } from 'src/app/checkout/shared/store/actions';
 import { MedusaDataService } from 'src/app/medusa-data.service';
-import { NavigationService } from 'src/app/shared/services/navigation.service';
-import { FormActions } from 'src/app/shared/store/actions';
-import { FormsState } from 'src/app/shared/store/forms.state';
-
-import { AddToCartComponent } from '../components/add-to-cart/add-to-cart.component';
-import { CartService } from '../services/cart/cart.service';
-import { ProductsService } from '../services/products/products.service';
-import { UtilityService } from '../services/utility/utility.service';
+import { AddToCartComponent } from '../shared/components/add-to-cart/add-to-cart.component';
+import { ShopActions } from '../shared/store/shop.actions';
 import { CartFacade } from '../shop.facade';
 
 @Component({
@@ -52,11 +47,9 @@ export class ProductsListPage {
     this.viewState$ = this.facade.viewState$;
   }
   getProductListFromState() {
-    this.store.dispatch(new FormActions.GetProductsList());
+    this.store.dispatch(new ShopActions.GetMedusaProductList());
   }
-  async addToCartModal(item) {
-    console.log(item);
-
+  async addToCartModal() {
     const modal = await this.modalCtrl.create({
       component: AddToCartComponent,
       cssClass: 'add-to-cart-modal',
@@ -73,8 +66,10 @@ export class ProductsListPage {
   async welcomePage() {
     this.navigation.navigateForward('/welcome');
   }
-  async productDetailsPage() {
-    // this.navigation.navigateForward('/welcome');
+  async productDetailsPage(product) {
+    this.navigation.navigateForwardParams('/product-details', product).then(() => {
+      this.store.dispatch(new ShopActions.addProductToState(product));
+    });
   }
   search(event: any) {
     const term = event.target.value;

@@ -1,15 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { RoutePath } from '../models/route-path.enum';
-import { CanActivateForms } from '../shared/services/can-activate-forms';
-
+import { RoutePath } from './models/route-path.enum';
 import { DeliveryPageComponent } from './components/delivery-page/delivery-page.component';
-// import { FormsHomeComponent } from './components/forms-home/forms-home.component';
 import { PaymentPageComponent } from './components/payment-page/payment-page.component';
 import { ReviewPageComponent } from './components/review-page/review-page.component';
 import { ShippingPageComponent } from './components/shippping-page/shipping-page.component';
 import { HomePage } from './home/home.page';
+import { CanActivateForms } from './shared/services/can-activate-forms';
 
 const routes: Routes = [
   {

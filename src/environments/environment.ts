@@ -30,4 +30,6 @@ export const environment = {
   create_medusa_cart: 'http://localhost:9000/store/carts/',
   // Get
   medusa_store: 'http://localhost:9000/admin/store/',
+  demo: 'demo1',
+  SERVER_URL: 'http://localhost:1337'
 };

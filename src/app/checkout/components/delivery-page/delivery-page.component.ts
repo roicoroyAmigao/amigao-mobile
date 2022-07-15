@@ -5,10 +5,10 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
-import { RoutePath } from 'src/app/models/route-path.enum';
-import { FormGroupErrorStateMatcher } from 'src/app/shared/form-group-error-state-matcher';
-import { passwordRegex } from 'src/app/shared/regexes.const';
-import { deliveryPageFromValidator } from '../../../shared/services/delivery-page-form.validator';
+import { RoutePath } from 'src/app/checkout/models/route-path.enum';
+import { FormGroupErrorStateMatcher } from '../../shared/form-group-error-state-matcher';
+import { passwordRegex } from '../../shared/regexes.const';
+import { deliveryPageFromValidator } from '../../shared/services/delivery-page-form.validator';
 
 @Component({
   selector: 'afn-delivery-page',

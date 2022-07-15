@@ -3,8 +3,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { RoutePath } from 'src/app/models/route-path.enum';
-import { shippingMethods } from '../../../shared/models/shipping-methods.const';
+import { RoutePath } from 'src/app/checkout/models/route-path.enum';
+import { shippingMethods } from '../../shared/models/shipping-methods.const';
 
 @Component({
   selector: 'afn-shipping-page',

@@ -1,21 +1,15 @@
 import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShopPageRoutingModule } from './shop-routing.module';
-
 import { ShopPage } from './shop.page';
-import { SharedModule } from '../shared/shared.module';
-import { MaterialModule } from '../material.module';
 import { TranslateModule } from '@ngx-translate/core';
-import { RegionFormComponent } from './components/region-form/region-form.component';
-import { NgxsModule } from '@ngxs/store';
-import { NgxsFormPluginModule } from '@ngxs/form-plugin';
-import { NgxMaskModule } from 'ngx-mask';
-import { FormsState } from '../shared/store/forms.state';
-import { ComponentsModule } from './components/components.module';
 import { RouterModule } from '@angular/router';
+import { ComponentsModule } from './shared/components/components.module';
+import { NgxsFormPluginModule } from '@ngxs/form-plugin';
+import { NgxsModule } from '@ngxs/store';
+import { ShopState } from './shared/store/shop.state';
 
 @NgModule({
   imports: [
@@ -23,10 +17,12 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     FormsModule,
     ShopPageRoutingModule,
-    SharedModule,
     TranslateModule,
     ComponentsModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule,
+    NgxsModule.forFeature([ShopState]),
+    NgxsFormPluginModule,
   ],
   declarations: [
     ShopPage,
@@ -34,6 +30,7 @@ import { RouterModule } from '@angular/router';
   entryComponents: [
   ],
   exports: [
+    ShopPage
   ]
 
 })

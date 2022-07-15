@@ -2,13 +2,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { StateReset } from 'ngxs-reset-plugin';
-
-import { addressFormValueToHTML } from 'src/app/shared/address-form/address-form-value.interface';
-import { FormsStateModel } from '../../../shared/models/forms-state-model.interface';
-import { ShippingMethod } from '../../../shared/models/shipping-method.interface';
-import { shippingMethods } from '../../../shared/models/shipping-methods.const';
-import { FormsState } from '../../../shared/store/forms.state';
-
+import { addressFormValueToHTML } from '../../shared/address-form/address-form-value.interface';
+import { FormsStateModel } from '../../shared/models/forms-state-model.interface';
+import { ShippingMethod } from '../../shared/models/shipping-method.interface';
+import { shippingMethods } from '../../shared/models/shipping-methods.const';
+import { FormsState } from '../../shared/store/forms.state';
 @Component({
   selector: 'afn-review-page',
   templateUrl: './review-page.component.html',
