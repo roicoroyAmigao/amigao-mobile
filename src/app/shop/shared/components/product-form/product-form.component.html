@@ -1,0 +1,25 @@
+<ion-card-header>
+  <ion-card-subtitle>
+    {{ medusaProduct?.title }}
+  </ion-card-subtitle>
+</ion-card-header>
+
+
+<form #form [formGroup]="productForm" ngxsForm="forms.productForm">
+  <ion-row formGroupName="variant" class="ion--text-center">  
+    <div *ngFor="let variant of medusaProduct?.variants">
+      <ion-col size="12">
+        <ion-button fill="outline"
+        [color]="activeFilter === variant.id ? 'success' : 'dark'" (click)="onSelectVariant(variant.id)">
+        {{ variant.title }}
+      </ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-text [color]="activeFilter === variant.id ? 'success' : 'dark'" *ngFor="let price of variant.prices">
+          {{ price.amount }}
+        </ion-text>
+      </ion-col>
+    </div>
+    <app-cart-counter></app-cart-counter>
+  </ion-row>
+</form>

@@ -11,7 +11,7 @@ export namespace FormActions {
     static readonly type = '[Form] Get Regions';
     constructor() { }
   }
-  export class PatchStateSelectedId {
+  export class PatchStateSelectedRegionId {
     static readonly type = '[Form] Pacth State with Selected Region ID';
     constructor(public regionId: string) { }
   }

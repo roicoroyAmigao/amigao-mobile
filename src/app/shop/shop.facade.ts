@@ -17,12 +17,12 @@ export interface ICartStateModel {
 export class CartFacade {
     @Select(FormsState.getFullCart) medusaFullCart: Observable<any>;
     @Select(FormsState.getMedusaProductsFromState) productsList: Observable<any>;
+    // @Select(FormsState.) productsList: Observable<any>;
 
     /** View state that resolves once all data is ready or updated */
     readonly viewState$: Observable<ICartStateModel>;
 
     constructor() {
-        console.log('contro');
         this.viewState$ = combineLatest(
             [
                 this.medusaFullCart,

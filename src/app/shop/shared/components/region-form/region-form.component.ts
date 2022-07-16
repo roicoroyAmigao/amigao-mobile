@@ -8,7 +8,9 @@ import { Store } from '@ngxs/store';
 import { Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { regionFromValidator } from 'src/app/checkout/shared/services/region-form.validator';
+import { FormsState } from 'src/app/checkout/shared/store/forms.state';
 import { MedusaDataService } from 'src/app/medusa-data.service';
+import { ShopState } from '../../store/shop.state';
 import { RegionService } from './region-service';
 
 @Component({
@@ -58,11 +60,15 @@ export class RegionFormComponent implements OnInit, OnDestroy {
         .subscribe((selectedRegion: any) => {
           this.selectedRegionId = selectedRegion;
           // this.patchStateWithRegionId(selectedRegion.id);
+          this.patchState(this.selectedRegionId);
           this.regionService.selectedRegionId.next(selectedRegion.id);
         }),
     );
   }
 
+  async patchState(regionId) {
+    //  this.store.dispatch);
+  }
   async dismissPopOver(regionId) {
     await this.popoverController.dismiss({ data: regionId });
   }

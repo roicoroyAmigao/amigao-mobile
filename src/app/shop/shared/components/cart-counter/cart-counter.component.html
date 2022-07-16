@@ -1,0 +1,14 @@
+<div class="counter-wrapper">
+
+  <ion-button class="counter-icon" [color]="color" (click)="decrement()" [disabled]="counterValue <= min">
+    <ion-icon name="remove" slot="icon-only" role="img" aria-label="remove"></ion-icon>
+  </ion-button>
+  <span class="counter-value ion-text-center">
+
+    <ion-input [value]="counterValue" [readonly]="readonly" type="text" placeholder="Awesome Input"></ion-input>
+
+  </span>
+  <ion-button class="counter-icon" [color]="color" (click)="increment()" [disabled]="counterValue >= max">
+    <ion-icon name="add" slot="icon-only" role="img" aria-label="add"></ion-icon>
+  </ion-button>
+</div>

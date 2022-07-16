@@ -1,0 +1,11 @@
+ion-slide {
+  height: 120px;
+}
+/* Popover Interface: set color for the popover using Item's CSS variables */
+.my-custom-interface .brown-option {
+  --color: #5e3e2c;
+  --color-hover: #362419;
+}
+app-cart-counter {
+  width: 100%;
+}

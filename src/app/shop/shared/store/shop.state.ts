@@ -1,5 +1,6 @@
+/* eslint-disable max-len */
 import { Injectable } from '@angular/core';
-import { Action, State, StateContext } from '@ngxs/store';
+import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { tap } from 'rxjs/operators';
 import { Product } from 'src/app/checkout/shared/classes/product';
 import { MedusaDataService } from 'src/app/medusa-data.service';
@@ -7,10 +8,14 @@ import { ShopActions } from './shop.actions';
 export interface ShopStateModel {
     productsList?: object;
     selectedProduct: Product;
+    productCartItem: object;
+    regionId?: string;
 }
 export const initShopStateModel: ShopStateModel = {
     productsList: null,
-    selectedProduct: null
+    selectedProduct: null,
+    productCartItem: null,
+    regionId: null,
 };
 @State({
     name: 'ShopState',
@@ -18,6 +23,7 @@ export const initShopStateModel: ShopStateModel = {
 })
 @Injectable()
 export class ShopState {
+    // static PatchStateSelectedRegionId: x/any;
 
     constructor(
         private medusaService: MedusaDataService
@@ -34,8 +40,38 @@ export class ShopState {
             }
         ));
     }
-    @Action(ShopActions.addProductToState)
-    addToCartAction({ patchState }: StateContext<ShopStateModel>, { selectedProduct }: ShopActions.addProductToState) {
+    @Selector()
+    static getMedusaProductsFromState(state: ShopStateModel) {
+        return state.selectedProduct;
+    }
+    @Selector()
+    static getProductCartItemFromState(state: ShopStateModel) {
+        return state.productCartItem;
+    }
+    @Action(ShopActions.PatchStateSelectedRegionId)
+    patchStateSelectedRegionId({ getState, patchState }: StateContext<ShopStateModel>, { regionId }: ShopActions.PatchStateSelectedRegionId) {
+        const state = getState();
+        return patchState({
+            regionId
+        });
+    }
+    @Action(ShopActions.SetSelectedProductToState)
+    setSelectedProductToState({ patchState }: StateContext<ShopStateModel>, { productCartItem }: ShopActions.SetSelectedProductToState) {
+        console.log(productCartItem);
+        return patchState({
+            productCartItem
+        });
+    }
+    @Action(ShopActions.GetProductFromState)
+    getProductFromState({ getState }: StateContext<ShopStateModel>, { }: ShopActions.GetProductFromState) {
+        const state = getState();
+        console.log(state);
+        // return patchState({
+        //     selectedProduct
+        // });
+    }
+    @Action(ShopActions.AddProductToState)
+    addToCartAction({ patchState }: StateContext<ShopStateModel>, { selectedProduct }: ShopActions.AddProductToState) {
         return patchState({
             selectedProduct
         });;

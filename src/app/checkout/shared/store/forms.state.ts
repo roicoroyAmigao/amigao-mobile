@@ -53,8 +53,8 @@ export class FormsState {
       }
     ));
   }
-  @Action(FormActions.PatchStateSelectedId)
-  patchStateSelectedId({ getState, patchState }: StateContext<FormsStateModel>, { regionId }: FormActions.PatchStateSelectedId) {
+  @Action(FormActions.PatchStateSelectedRegionId)
+  patchStateSelectedRegionId({ getState, patchState }: StateContext<FormsStateModel>, { regionId }: FormActions.PatchStateSelectedRegionId) {
     const state = getState();
     return patchState({
       regionId

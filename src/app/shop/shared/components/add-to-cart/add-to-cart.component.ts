@@ -1,7 +1,11 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector */
-import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { Component, Input, OnInit } from '@angular/core';
+import { ModalController, NavParams } from '@ionic/angular';
+import { Store } from '@ngxs/store';
+import { ShopActions } from '../../store/shop.actions';
 import { UtilityService } from '../../utility.service';
+import { CartQuantityService } from '../cart-counter/cart-couter.service';
 @Component({
   selector: 'app-add-to-cart',
   templateUrl: './add-to-cart.component.html',
@@ -14,43 +18,29 @@ export class AddToCartComponent {
 
   constructor(
     private modalCtrl: ModalController,
-    public utility: UtilityService
+    private cartQuantityService: CartQuantityService,
+    public navParams: NavParams,
+    private store: Store
   ) {
-    // this.minOrderQty = 1;
-    // this.cart.item.cartQuantity = this.minOrderQty;
-    // this.availableQty = this.cart.item.totalStock || 0;
+
+    console.log(navParams.get('data'));
   }
 
   dismiss() {
     this.modalCtrl.dismiss('hello');
   }
 
-  increaseQuantity() {
-
-  }
-
-  decreaseQuantity() {
-
-  }
-
-  // getCartItemQty() {
-  //   const index = this.cart.items.findIndex(value => value.id === this.cart.item.id);
-  //   let qty = this.cart.item.cartQuantity;
-  //   if (index > -1) {
-  //     qty = this.cart.items[index].cartQuantity + this.cart.item.cartQuantity;
-  //   }
-  //   return qty;
-  // }
-
   addToCart() {
     const itemQty = 1;
     const validOrder = itemQty;
 
     if (validOrder) {
-      this.modalCtrl.dismiss({data: validOrder, role:'role'}  );
+      this.modalCtrl.dismiss({ data: validOrder, role: 'role' });
     } else {
-      this.utility.showToast('This product is out of stock!', 'top', 'error');
+      // this.utility.showToast('This product is out of stock!', 'top', 'error');
     }
   }
-
+  ionViewDidLeave() {
+    this.store.dispatch(ShopActions.ClearProductFromState);
+  }
 }

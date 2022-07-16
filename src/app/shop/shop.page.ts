@@ -36,7 +36,7 @@ export class ShopPage {
     }
   }
   patchStateWithRegionId(regionId: string) {
-    this.store.dispatch(new FormActions.PatchStateSelectedId(regionId));
+    this.store.dispatch(new FormActions.PatchStateSelectedRegionId(regionId));
   }
   createMedusaCart(regionId: string) {
     this.store.dispatch(new FormActions.CreateCart(regionId));

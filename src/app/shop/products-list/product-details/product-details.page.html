@@ -1,27 +1,53 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button (click)="productsListPage()">
+      <ion-button (click)="closeProductList()">
         <ion-icon slot="start" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeProductList()" expand="block" fill="clear" shape="round">
+        <ion-icon slot="start" name="add"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>
+        {{ medusaProduct?.title }}
+      </ion-card-subtitle>
+      <ion-card-title>{{ medusaProduct?.subtitle }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+            <ion-slides pager="true" [options]="slideOpts" mode="ios" pager="ios" scrollbar="ios">
+              <ion-slide *ngFor="let image of medusaProduct?.images">
+                <ion-img [src]="image?.url"></ion-img>
+              </ion-slide>
+            </ion-slides>
+          </ion-item>
+        </ion-col>
+      </ion-row>
 
-  <form #form [formGroup]="productForm" ngxsForm="forms.productForm">
-    <ion-list formGroupName="variant" class="ion--text-center">
-      <ion-input type="text" formControlName="varianId"></ion-input>
-    </ion-list>
+      <app-product-form></app-product-form>
 
-    <ion-button (click)="submitForm()" expand="block" fill="clear" shape="round">
-      Click me
-    </ion-button>
-  </form>
+      <ion-row>
+        <ion-col size="12">
+          {{ medusaProduct?.description }}
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
 
+  <ion-fab vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="closeProductList()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
-  <ion-button (click)="addToCart()" expand="block" fill="clear" shape="round">
-    Add to Cart
-  </ion-button>
 </ion-content>

@@ -13,7 +13,7 @@ export class UtilityService {
   constructor(
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
-    private alertCtrl: AlertController
+    public alertCtrl: AlertController
   ) { }
 
   async presentLoading(content) {
@@ -53,7 +53,7 @@ export class UtilityService {
     toast.present();
   }
 
-  async confirm(config: any) {
+  async confirm(config?: any) {
     const alert = await this.alertCtrl.create({
       mode: 'ios',
       cssClass: 'my-custom-class',
@@ -69,7 +69,9 @@ export class UtilityService {
         {
           text: 'Yes',
           cssClass: 'primary',
-          handler: config.okayHandler,
+          handler: () => {
+
+          },
         }
       ]
     });

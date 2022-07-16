@@ -9,6 +9,8 @@ import { AddToCartComponent } from './add-to-cart/add-to-cart.component';
 import { RegionFormComponent } from './region-form/region-form.component';
 import { MaterialModule } from 'src/app/material.module';
 import { CartPage } from './cart/cart.page';
+import { CartCounterComponent } from './cart-counter/cart-counter.component';
+import { ProductFormComponent } from './product-form/product-form.component';
 
 @NgModule({
   imports: [
@@ -23,13 +25,17 @@ import { CartPage } from './cart/cart.page';
     ImagePickerComponent,
     AddToCartComponent,
     RegionFormComponent,
-    CartPage
+    CartPage,
+    CartCounterComponent,
+    ProductFormComponent
   ],
   exports: [
     ImagePickerComponent,
     RegionFormComponent,
     AddToCartComponent,
-    CartPage
+    CartPage,
+    CartCounterComponent,
+    ProductFormComponent
   ]
 })
 export class ComponentsModule { }
