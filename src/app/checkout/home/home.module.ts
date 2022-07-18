@@ -12,8 +12,7 @@ import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 import { NgxsModule } from '@ngxs/store';
 import { NgxMaskModule } from 'ngx-mask';
 import { MaterialModule } from 'src/app/material.module';
-import { SharedModule } from 'src/app/shared/shared.module';
-import { FormsState } from 'src/app/shared/store/forms.state';
+import { FormsState } from '../shared/store/forms.state';
 
 @NgModule({
   imports: [
@@ -25,7 +24,6 @@ import { FormsState } from 'src/app/shared/store/forms.state';
     NgxsModule.forFeature([FormsState]),
     NgxsFormPluginModule,
     TranslateModule,
-    SharedModule,
     MaterialModule
   ],
   schemas:[

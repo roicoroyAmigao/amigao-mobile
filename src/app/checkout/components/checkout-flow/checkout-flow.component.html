@@ -1,0 +1,144 @@
+<ion-content>
+
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-button (click)="backHome()" expand="block" fill="clear" shape="round">
+          back Home
+        </ion-button>
+
+        {{ medusaCart.id }}
+
+        <!-- <mat-card>
+          <mat-card-content>
+            <mat-radio-group [(ngModel)]="region" id="shipping-method" class="db">
+              <mat-radio-button class="mb2" *ngFor="let r of regions" [value]="r.id">
+                <span class="ws-normal">
+                  <span class="fw5">
+                    {{ r.id }}
+                    {{ r.name }}
+                  </span>
+                </span>
+              </mat-radio-button>
+            </mat-radio-group>
+          </mat-card-content>
+        </mat-card>
+
+        
+        <ion-button (click)="createMedusaCart()" expand="block" fill="clear" shape="round">
+          Create Cart
+        </ion-button>
+
+        <mat-card>
+          <mat-card-content>
+            <mat-radio-group [(ngModel)]="products" id="products-method" class="db">
+              <mat-radio-button class="mb2" *ngFor="let p of productsList" [value]="p.id" (click)="onSelectProduct(p)">
+                <span class="ws-normal">
+                  <span class="fw5">
+                    {{ p.id }}
+                    {{ p.name }}
+                  </span>
+                </span>
+              </mat-radio-button>
+            </mat-radio-group>
+          </mat-card-content>
+        </mat-card> -->
+
+
+        <ion-button (click)="addProductMock()" expand="block" fill="clear" shape="round">
+          Add Product to Cart
+        </ion-button>
+        <ion-button (click)="addEmailToCart()" expand="block" fill="clear" shape="round">
+          Add Email to Cart
+        </ion-button>
+        <ion-button (click)="addAddressToCart()" expand="block" fill="clear" shape="round">
+          Add Address to Cart
+        </ion-button>
+
+        <mat-card>
+          <mat-card-content>
+            <mat-radio-group [(ngModel)]="shippingMethod" id="shipping-method" class="db">
+              <mat-radio-button *ngFor="let shippingMethod of shippingMethods" [value]="shippingMethod.id">
+                {{ shippingMethod.name }}
+                {{ shippingMethod.id }}
+              </mat-radio-button>
+            </mat-radio-group>
+          </mat-card-content>
+        </mat-card>
+
+        <ion-button (click)="addShippingMethod()" expand="block" fill="clear" shape="round">
+          Add Shipping Method Obj
+        </ion-button>
+
+        <ion-button (click)="initPaymentSession()" expand="block" fill="clear" shape="round">
+          Init Payment Session
+        </ion-button>
+
+        <mat-card>
+          <mat-card-content>
+            <form>
+              <mat-card>
+                <p>Seeiont List</p>
+                <form [formGroup]="paymentSessionForm" ngxsForm="forms.paymentSessionForm">
+                  <mat-radio-group formControlName="provider_id">
+                    <div *ngFor="let p of paymentSessionsList">
+                      <mat-radio-button class="mr3" [value]="p.provider_id">
+                        {{ p.provider_id }}
+                      </mat-radio-button>
+                    </div>
+                  </mat-radio-group>
+                </form>
+
+              </mat-card>
+            </form>
+          </mat-card-content>
+        </mat-card>
+
+        <ion-button (click)="addPaymentSession()" expand="block" fill="clear" shape="round">
+          addPaymentSession
+        </ion-button>
+
+
+        <!-- <mat-card>
+          <mat-card-content>
+            <form [formGroup]="paymentMethodForm" ngxsForm="forms.paymentMethodForm">
+              <mat-card>
+                <mat-radio-group formControlName="provider_id">
+                  <div *ngFor="let p of paymentMethodsList">
+                    <mat-radio-button class="mr3" [value]="p.provider_id">{{ p.provider_id }}</mat-radio-button>
+                  </div>
+                </mat-radio-group>
+              </mat-card>
+            </form>
+          </mat-card-content>
+        </mat-card> -->
+
+
+
+
+
+
+        <ng-container *ngIf="elementsOptions?.clientSecret as clientSecret">
+          <ngx-stripe-payment [clientSecret]="clientSecret">
+          </ngx-stripe-payment>
+        </ng-container>
+
+        <ion-button (click)="postStripeCard()" expand="block" fill="clear" shape="round">
+          Post Stripe card
+        </ion-button>
+
+
+        <ion-button (click)="completeCart()" expand="block" fill="clear" shape="round">
+          Complete Cart
+        </ion-button>
+
+        <ion-button (click)="deleteSession()" expand="block" fill="clear" shape="round" color="danger">
+          Delete Session
+        </ion-button>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

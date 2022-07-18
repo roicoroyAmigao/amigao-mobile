@@ -25,7 +25,7 @@ export class UtilityService {
       // duration: 2000
     }).then(loader => {
       loader.present().then(resp => {
-        console.log('loading present :>> ');
+        // console.log('loading present :>> ');
         if (!this.isLoading) {
           loader.dismiss().then(() => console.log('abort loading'));
         }
@@ -37,7 +37,7 @@ export class UtilityService {
     this.isLoading = false;
     if (this.loadingCtrl) {
       return await this.loadingCtrl.dismiss().then(resp => {
-        console.log(' :>> Loading dismiss');
+        // console.log(' :>> Loading dismiss');
       });
     }
   }
@@ -46,7 +46,7 @@ export class UtilityService {
   async showToast(msg: string, position, type = 'success') {
     const toast = await this.toastCtrl.create({
       message: msg,
-      duration: 3000,
+      duration: 100,
       position,
       cssClass: 'toast-' + type
     });

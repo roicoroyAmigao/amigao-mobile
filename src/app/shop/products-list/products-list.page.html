@@ -5,6 +5,7 @@
     </ion-toolbar>
   </ion-header>
   <ion-grid>
+
     <ion-row *ngIf="productsList as vs">
       <ion-col size="6" size-lg="3" size-md="4" *ngFor="let p of vs.productsList?.products">
         <ion-card class="ion-no-margin">
@@ -15,9 +16,9 @@
             <ion-text color="primary">
               {{ p.title }}
             </ion-text>
-            <ion-button expand="full" color="danger" size="small" (click)="addToCartModal(p)">
+            <!-- <ion-button expand="full" color="danger" size="small" (click)="addToCartModal(p)">
               Add Product to cart
-            </ion-button>
+            </ion-button> -->
           </ion-card-content>
         </ion-card>
       </ion-col>

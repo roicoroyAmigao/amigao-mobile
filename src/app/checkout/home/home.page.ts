@@ -4,6 +4,7 @@ import { IonSlides, NavController } from '@ionic/angular';
 import { Store } from '@ngxs/store';
 import { Observable, Subscription } from 'rxjs';
 import { NavigationService } from '../shared/services/navigation.service';
+import { FormActions } from '../shared/store/actions';
 import * as FormsSelectors from '../shared/store/forms.selectors';
 
 @Component({
@@ -20,6 +21,7 @@ export class HomePage implements OnInit {
   isPaymentEnabled$: Observable<boolean>;
   segmentModel;
   segment = 0;
+  cartId;
   constructor(
     private navCtrl: NavController,
     private store: Store,
@@ -41,7 +43,24 @@ export class HomePage implements OnInit {
   async slideChanged() {
     // this.segment = await this.slider.getActiveIndex();
   }
+  getFullCart() {
+    console.log('cc');
 
+    this.store.dispatch(new FormActions.GetFullCart()).subscribe((medusaFullCartFromServer) => {
+      console.log(medusaFullCartFromServer);
+      console.log(medusaFullCartFromServer.ShopState.medusaFullCart);
+    });
+
+  }
+  createCart() {
+
+  }
+  addProductCart() {
+
+  }
+  getUpdatedCart() {
+
+  }
   segmentChangedEvent(event) {
     console.log(this.segmentModel);
 

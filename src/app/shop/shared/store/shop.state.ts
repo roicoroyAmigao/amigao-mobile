@@ -10,12 +10,16 @@ export interface ShopStateModel {
     selectedProduct: Product;
     productCartItem: object;
     regionId?: string;
+    medusaCartId: string;
+    medusaFullCart: object;
 }
 export const initShopStateModel: ShopStateModel = {
     productsList: null,
     selectedProduct: null,
     productCartItem: null,
     regionId: null,
+    medusaCartId: null,
+    medusaFullCart: null,
 };
 @State({
     name: 'ShopState',
@@ -29,6 +33,18 @@ export class ShopState {
         private medusaService: MedusaDataService
     ) { }
 
+    @Selector()
+    static getMedusaProductsFromState(state: ShopStateModel) {
+        return state.selectedProduct;
+    }
+    @Selector()
+    static getProductCartItemFromState(state: ShopStateModel) {
+        return state.productCartItem;
+    }
+    @Selector()
+    static getFullCart(state: ShopStateModel) {
+      return state.medusaFullCart;
+    }
     @Action(ShopActions.GetMedusaProductList)
     getMedusaProductList({ patchState }: StateContext<ShopStateModel>, { }: ShopActions.GetMedusaProductList) {
         return this.medusaService.getMedusaProducts().pipe(tap(
@@ -40,13 +56,37 @@ export class ShopState {
             }
         ));
     }
-    @Selector()
-    static getMedusaProductsFromState(state: ShopStateModel) {
-        return state.selectedProduct;
+    @Action(ShopActions.AddProductMedusaToCart)
+    addProductMedusaToCart({ patchState }: StateContext<ShopStateModel>, { cartId, variantId, quantity }: ShopActions.AddProductMedusaToCart) {
+        console.log(cartId, variantId, quantity);
+        return this.medusaService.addProductOnCart(cartId, variantId, quantity).pipe(tap((result: any) => {
+            patchState({
+                medusaFullCart: result.cart
+            });
+        }
+        ));
     }
-    @Selector()
-    static getProductCartItemFromState(state: ShopStateModel) {
-        return state.productCartItem;
+    @Action(ShopActions.GetMedusaCart)
+    getMedusaCart({ patchState }: StateContext<ShopStateModel>, { cartId }: ShopActions.GetMedusaCart) {
+        return this.medusaService.getCart(cartId)
+            .pipe(tap((result: any) => {
+                patchState({
+                    medusaCartId: result.cart.id,
+                    medusaFullCart: result.cart
+                });
+            }
+            ));
+    }
+    @Action(ShopActions.CreateMedusaCart)
+    createMedusaCart({ patchState }: StateContext<ShopStateModel>, { regionId }: ShopActions.CreateMedusaCart) {
+        return this.medusaService.createMedusaCart(regionId)
+            .pipe(tap((result: any) => {
+                patchState({
+                    medusaCartId: result.cart.id,
+                    medusaFullCart: result.cart
+                });
+            }
+            ));
     }
     @Action(ShopActions.PatchStateSelectedRegionId)
     patchStateSelectedRegionId({ getState, patchState }: StateContext<ShopStateModel>, { regionId }: ShopActions.PatchStateSelectedRegionId) {
@@ -55,8 +95,8 @@ export class ShopState {
             regionId
         });
     }
-    @Action(ShopActions.SetSelectedProductToState)
-    setSelectedProductToState({ patchState }: StateContext<ShopStateModel>, { productCartItem }: ShopActions.SetSelectedProductToState) {
+    @Action(ShopActions.SetProductCartItem)
+    setSelectedProductToState({ patchState }: StateContext<ShopStateModel>, { productCartItem }: ShopActions.SetProductCartItem) {
         console.log(productCartItem);
         return patchState({
             productCartItem
@@ -72,6 +112,7 @@ export class ShopState {
     }
     @Action(ShopActions.AddProductToState)
     addToCartAction({ patchState }: StateContext<ShopStateModel>, { selectedProduct }: ShopActions.AddProductToState) {
+        console.log(selectedProduct);
         return patchState({
             selectedProduct
         });;

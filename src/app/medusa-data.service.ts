@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable @typescript-eslint/naming-convention */
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -8,6 +9,9 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class MedusaDataService {
+  getCarts(id: any) {
+    throw new Error('Method not implemented.');
+  }
   headers_json = new HttpHeaders().set('Content-Type', 'application/json');
   headers_form_data = new HttpHeaders().set('Content-Type', 'multipart/form-data');
   headers_url_encoded = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
@@ -116,9 +120,35 @@ export class MedusaDataService {
     console.log(data);
     return this.http.post(url, data, { headers: this.headers_json });
   }
+  addShippingAddressToUserMockValues(medusaCartId): Observable<any> {
+    const shippingAddressObj = {
+        billing_address: {
+            address_1: 'addressLine1',
+            address_2: 'addressLine2',
+            city: 'city',
+            country_code: 'GB',
+            first_name: 'firstName',
+            last_name: 'lastName',
+            phone: 'phoneNumber',
+            postal_code: 'postalCode',
+        },
+        shipping_address: {
+            address_1: 'addressLine1',
+            address_2: 'addressLine2',
+            city: 'city',
+            country_code: 'GB',
+            first_name: 'firstName',
+            last_name: 'lastName',
+            phone: 'phoneNumber',
+            postal_code: 'postalCode',
+        },
+    };
+    const url = `http://localhost:9000/store/carts/${medusaCartId}`;
+    return this.http.post(url, shippingAddressObj, this.httpOptions);
+}
   addShippingMethod(medusaCartId, reqObj) {
     const obj = {
-      option_id: reqObj?.value,
+      option_id: reqObj,
     };
     console.log(obj);
     const url = `http://localhost:9000/store/carts/${medusaCartId}/shipping-methods`;
@@ -158,7 +188,7 @@ export class MedusaDataService {
     const url = `http://localhost:9000/store/carts/${medusaCartId}/payment-sessions/:${provider_id}/refresh`;
     return this.http.post(url, data, { headers: this.headers_json });
   }
-  getCarts(medusaCartId) {
+  getCart(medusaCartId) {
     const url = `http://localhost:9000/store/carts/${medusaCartId}`;
     return this.http.get(url, this.httpOptions);
   }

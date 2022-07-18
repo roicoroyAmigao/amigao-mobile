@@ -18,22 +18,13 @@ export class ShopPage {
     private dataService: MedusaDataService,
     private store: Store,
     private menu: MenuController,
-  ) {
-   }
-
+  ) { }
   async presentPopover(e: Event) {
     const popover = await this.popoverController.create({
       component: RegionFormComponent,
       event: e
     });
     await popover.present();
-    const { data } = await popover.onDidDismiss();
-    if (data?.data != null || data?.data !== this.regionId) {
-      this.regionId = `${data.data}`;
-      console.log(this.regionId);
-      this.patchStateWithRegionId(this.regionId);
-      this.createMedusaCart(this.regionId);
-    }
   }
   patchStateWithRegionId(regionId: string) {
     this.store.dispatch(new FormActions.PatchStateSelectedRegionId(regionId));

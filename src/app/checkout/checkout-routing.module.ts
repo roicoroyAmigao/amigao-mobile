@@ -8,6 +8,7 @@ import { ReviewPageComponent } from './components/review-page/review-page.compon
 import { ShippingPageComponent } from './components/shippping-page/shipping-page.component';
 import { HomePage } from './home/home.page';
 import { CanActivateForms } from './shared/services/can-activate-forms';
+import { CheckoutFlowComponent } from './components/checkout-flow/checkout-flow.component';
 
 const routes: Routes = [
   {
@@ -43,6 +44,10 @@ const routes: Routes = [
   {
     path: RoutePath.review,
     component: ReviewPageComponent
+  },
+  {
+    path: RoutePath.checkoutFlow,
+    component: CheckoutFlowComponent
   },
   {
     path: '',

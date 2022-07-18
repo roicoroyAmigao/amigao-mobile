@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable @angular-eslint/component-selector */
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Validators, FormBuilder } from '@angular/forms';
+import { Validators, FormBuilder, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PopoverController } from '@ionic/angular';
 import { Store } from '@ngxs/store';
@@ -27,12 +27,13 @@ export class RegionFormComponent implements OnInit, OnDestroy {
     },
     { validator: regionFromValidator }
   );
-
+  defaultCurrencyCode = 'gbp';
   submitted = false;
   regionsLoaded = false;
   accountLoaded = false;
   regionsList;
   selectedRegionId;
+  currentRegion;
   medusaCartId;
   sub: Subscription;
   private subscription = new Subscription();
@@ -46,12 +47,19 @@ export class RegionFormComponent implements OnInit, OnDestroy {
     private regionService: RegionService,
     public popoverController: PopoverController
   ) { }
-
-  ngOnInit(): void {
+  get regionControl() {
+    return this.regionForm.get('region') as FormControl;
+  }
+  async ngOnInit(): Promise<void> {
     this.subscription.add(
       this.dataService.getMedusaRegions().subscribe((medusaReg: any) => {
         this.regionsList = medusaReg.regions;
       }),
+    );
+    this.subscription.add(
+      this.regionService.selectedRegionId.subscribe((selectedRegion) => {
+        this.regionControl.get('id').setValue(selectedRegion);
+      })
     );
     this.subscription.add(
       this.regionForm
@@ -59,18 +67,13 @@ export class RegionFormComponent implements OnInit, OnDestroy {
         .valueChanges.pipe(take(1))
         .subscribe((selectedRegion: any) => {
           this.selectedRegionId = selectedRegion;
-          // this.patchStateWithRegionId(selectedRegion.id);
-          this.patchState(this.selectedRegionId);
+          this.regionControl.get('id').setValue(selectedRegion);
           this.regionService.selectedRegionId.next(selectedRegion.id);
         }),
     );
   }
-
-  async patchState(regionId) {
-    //  this.store.dispatch);
-  }
-  async dismissPopOver(regionId) {
-    await this.popoverController.dismiss({ data: regionId });
+  dismissPopOver(regionId) {
+    this.popoverController.dismiss({ data: regionId });
   }
   ngOnDestroy() {
     this.subscription.unsubscribe();

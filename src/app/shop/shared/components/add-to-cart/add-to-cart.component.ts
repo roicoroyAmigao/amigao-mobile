@@ -12,33 +12,18 @@ import { CartQuantityService } from '../cart-counter/cart-couter.service';
   styleUrls: ['./add-to-cart.component.scss'],
 })
 export class AddToCartComponent {
-
-  minOrderQty: any;
-  availableQty: any;
-
   constructor(
     private modalCtrl: ModalController,
     private cartQuantityService: CartQuantityService,
     public navParams: NavParams,
     private store: Store
-  ) {
-
-    console.log(navParams.get('data'));
-  }
+  ) { }
 
   dismiss() {
-    this.modalCtrl.dismiss('hello');
+    this.modalCtrl.dismiss();
   }
-
   addToCart() {
-    const itemQty = 1;
-    const validOrder = itemQty;
-
-    if (validOrder) {
-      this.modalCtrl.dismiss({ data: validOrder, role: 'role' });
-    } else {
-      // this.utility.showToast('This product is out of stock!', 'top', 'error');
-    }
+    this.modalCtrl.dismiss();
   }
   ionViewDidLeave() {
     this.store.dispatch(ShopActions.ClearProductFromState);

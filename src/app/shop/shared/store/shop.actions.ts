@@ -3,40 +3,52 @@ import { Product } from 'src/app/checkout/shared/classes/product';
 
 /* eslint-disable @typescript-eslint/no-namespace */
 export namespace ShopActions {
-    export class PatchStateSelectedRegionId {
-        static readonly type = '[Form] Pacth State with Selected Region ID';
+    export class CreateMedusaCart {
+        static readonly type = '[Shop] Create Medusa Cart';
         constructor(public regionId: string) { }
-      }
-    export class GetMedusaProductList {
-        static readonly type = '[ShopActions] Get Full Medusa Product List';
     }
-    export class SetSelectedProductToState {
+    export class AddProductMedusaToCart {
+        static readonly type = '[Shop] Add Products to Medusa Cart with Id, cariantId and qty';
+        constructor(public cartId: string, public variantId: string, public quantity: number) { }
+    }
+    export class GetMedusaCart {
+        static readonly type = '[Shop] Get Medsa Cart With ID';
+        constructor(public cartId: string) { }
+    }
+    export class PatchStateSelectedRegionId {
+        static readonly type = '[Shop] Pacth State with Selected Region ID';
+        constructor(public regionId: string) { }
+    }
+    export class GetMedusaProductList {
+        static readonly type = '[Shop] Get Full Medusa Product List';
+    }
+    export class SetProductCartItem {
         static readonly type = '[ShopActions] Set Selected Product To State';
         constructor(public productCartItem) { }
     }
     export class AddProductToState {
-        static readonly type = '[ShopActions] Add product to state';
+        static readonly type = '[Shop] Add product to state';
         constructor(public selectedProduct: Product) { }
     }
     export class GetProductFromState {
-        static readonly type = '[ShopActions] Get product from state';
+        static readonly type = '[Shop] Get product from state';
         constructor() { }
     }
     export class ClearProductFromState {
-        static readonly type = '[ShopActions] Clear product from state';
+        static readonly type = '[Shop] Clear product from state';
         constructor() { }
     }
-    export class GetFullCart {
-        static readonly type = '[ShopActions] Get Full Medusa Cart';
-    }
+    // export class GetFullCart {
+    //     static readonly type = '[Shop] Get Medusa full cart form ';
+    // }
     export class AddToCartAction {
-        static readonly type = '[ShopActions] Get Full Medusa Cart';
-        constructor(public productId: string, public quanity: string) { }
+        static readonly type = '[Shop] AddToCartAction';
+        constructor(public varianId?: string, public quanity?: number) { }
     }
     export class RemoveFromCartAction {
-        static readonly type = '[ShopActions] Get Full Medusa Cart';
+        static readonly type = '[Shop] Get Full Medusa Cart';
     }
     export class UpdateCartAction {
-        static readonly type = '[ShopActions] Get Full Medusa Cart';
+        static readonly type = '[Shop] Get Full Medusa Cart';
     }
 }

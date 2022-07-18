@@ -30,14 +30,14 @@ export class CartCounterComponent implements OnInit {
   ngOnInit() {
     this.counterValue = this.counterValue || this.min;
     this.productQuantityService.cartQuantity.next(this.counterValue);
-    this.counterChange = new EventEmitter();
+    // this.counterChange = new EventEmitter();
   }
 
   increment() {
     if (this.counterValue < this.max) {
       this.counterValue = this.counterValue + this.step;
       this.productQuantityService.cartQuantity.next(this.counterValue);
-      this.counterChange.emit(this.counterValue);
+      // this.counterChange.emit(this.counterValue);
     }
   }
 
@@ -45,7 +45,7 @@ export class CartCounterComponent implements OnInit {
     if (this.counterValue > this.min) {
       this.counterValue = this.counterValue - this.step;
       this.productQuantityService.cartQuantity.next(this.counterValue);
-      this.counterChange.emit(this.counterValue);
+      // this.counterChange.emit(this.counterValue);
     }
   }
 }

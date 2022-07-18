@@ -138,7 +138,6 @@ export class FormsState {
 
   @Action(FormActions.AddEmailToCart)
   addEmailToCart({ patchState }: StateContext<FormsStateModel>, { cartId, cartEmail }: FormActions.AddEmailToCart) {
-
     if (cartId == null || cartId === undefined || cartEmail == null || cartEmail === undefined) {
       return;
     } else {

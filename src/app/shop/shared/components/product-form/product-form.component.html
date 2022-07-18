@@ -1,18 +1,40 @@
+<ion-item lines="none">
+  <ion-buttons slot="end">
+    <ion-button (click)="presentPopover($event)">
+      <ion-icon name="location-outline"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+</ion-item>
+
 <ion-card-header>
   <ion-card-subtitle>
     {{ medusaProduct?.title }}
   </ion-card-subtitle>
+  <!-- <afn-region-form></afn-region-form> -->
 </ion-card-header>
 
 
+
+<ion-row>
+  <ion-col size="12">
+    <ion-item>
+      <ion-slides pager="true" [options]="slideOpts" mode="ios" pager="ios" scrollbar="ios">
+        <ion-slide *ngFor="let image of medusaProduct?.images">
+          <ion-img [src]="image?.url"></ion-img>
+        </ion-slide>
+      </ion-slides>
+    </ion-item>
+  </ion-col>
+</ion-row>
+
 <form #form [formGroup]="productForm" ngxsForm="forms.productForm">
-  <ion-row formGroupName="variant" class="ion--text-center">  
+  <ion-row formGroupName="variant" class="ion--text-center">
     <div *ngFor="let variant of medusaProduct?.variants">
       <ion-col size="12">
-        <ion-button fill="outline"
-        [color]="activeFilter === variant.id ? 'success' : 'dark'" (click)="onSelectVariant(variant.id)">
-        {{ variant.title }}
-      </ion-button>
+        <ion-button fill="outline" [color]="activeFilter === variant.id ? 'success' : 'dark'"
+          (click)="onSelectVariant(variant.id)">
+          {{ variant.title }}
+        </ion-button>
       </ion-col>
       <ion-col size="6">
         <ion-text [color]="activeFilter === variant.id ? 'success' : 'dark'" *ngFor="let price of variant.prices">
@@ -21,5 +43,15 @@
       </ion-col>
     </div>
     <app-cart-counter></app-cart-counter>
+
+  </ion-row>
+  <ion-row>
+    <ion-col size="12">
+      {{ medusaProduct?.description }}
+    </ion-col>
   </ion-row>
 </form>
+
+<ion-button (click)="addToCart()" expand="block" fill="outline" shape="round">
+  Add to Cart
+</ion-button>

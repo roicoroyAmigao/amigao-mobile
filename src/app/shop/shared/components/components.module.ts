@@ -8,9 +8,9 @@ import { TranslateModule } from '@ngx-translate/core';
 import { AddToCartComponent } from './add-to-cart/add-to-cart.component';
 import { RegionFormComponent } from './region-form/region-form.component';
 import { MaterialModule } from 'src/app/material.module';
-import { CartPage } from './cart/cart.page';
 import { CartCounterComponent } from './cart-counter/cart-counter.component';
 import { ProductFormComponent } from './product-form/product-form.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   imports: [
@@ -25,7 +25,7 @@ import { ProductFormComponent } from './product-form/product-form.component';
     ImagePickerComponent,
     AddToCartComponent,
     RegionFormComponent,
-    CartPage,
+    CartComponent,
     CartCounterComponent,
     ProductFormComponent
   ],
@@ -33,7 +33,7 @@ import { ProductFormComponent } from './product-form/product-form.component';
     ImagePickerComponent,
     RegionFormComponent,
     AddToCartComponent,
-    CartPage,
+    CartComponent,
     CartCounterComponent,
     ProductFormComponent
   ]

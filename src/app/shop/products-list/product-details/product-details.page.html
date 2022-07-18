@@ -1,28 +1,29 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button (click)="closeProductList()">
+      <ion-button (click)="navigateProductListPage()">
         <ion-icon slot="start" name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-buttons slot="end">
-      <ion-button (click)="closeProductList()" expand="block" fill="clear" shape="round">
+    
+    <!-- <ion-buttons slot="end">
+      <ion-button expand="block" fill="clear" shape="round">
         <ion-icon slot="start" name="add"></ion-icon>
       </ion-button>
-    </ion-buttons>
+    </ion-buttons> -->
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-card>
-    <ion-card-header>
+    <!-- <ion-card-header>
       <ion-card-subtitle>
         {{ medusaProduct?.title }}
       </ion-card-subtitle>
       <ion-card-title>{{ medusaProduct?.subtitle }}</ion-card-title>
     </ion-card-header>
-    <ion-card-content>
-      <ion-row>
+    <ion-card-content> -->
+      <!-- <ion-row>
         <ion-col size="12">
           <ion-item>
             <ion-slides pager="true" [options]="slideOpts" mode="ios" pager="ios" scrollbar="ios">
@@ -32,22 +33,22 @@
             </ion-slides>
           </ion-item>
         </ion-col>
-      </ion-row>
+      </ion-row> -->
 
       <app-product-form></app-product-form>
 
-      <ion-row>
+      <!-- <ion-row>
         <ion-col size="12">
           {{ medusaProduct?.description }}
         </ion-col>
-      </ion-row>
-    </ion-card-content>
+      </ion-row> -->
+    <!-- </ion-card-content> -->
   </ion-card>
 
-  <ion-fab vertical="bottom" horizontal="end">
+  <!-- <ion-fab vertical="bottom" horizontal="end">
     <ion-fab-button (click)="closeProductList()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
-  </ion-fab>
+  </ion-fab> -->
 
 </ion-content>
