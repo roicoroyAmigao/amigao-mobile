@@ -1,0 +1,87 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      {{ 'auth.login.title' | translate }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">
+        {{ 'auth.login.title' | translate }}
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+
+  <ion-grid class="ion-margin">
+
+    <form (ngSubmit)="login()" #form="ngForm">
+      <ion-text class="sub-title">{{ 'auth.login.subtitle' | translate }}</ion-text>
+      <ion-row>
+        <ion-col>
+          <ion-label class="label" for="input-email">
+            {{ 'auth.login.form.input.email.label' | translate }}
+          </ion-label>
+          <ion-input [(ngModel)]="authLoginReq.email" #email="ngModel" name="email" id="input-email" pattern=".+@.+\..+"
+            placeholder="{{ 'auth.login.form.input.email.placeholder' | translate }}" fieldSize="large" autofocus
+            [required]="config.emailRequired" [attr.aria-invalid]="email.invalid && email.touched ? true : null">
+          </ion-input>
+          <ng-container *ngIf="email.invalid && email.touched">
+            <p *ngIf="email.errors?.required">
+              {{ 'auth.login.form.input.email.required_message' | translate }}
+            </p>
+            <p *ngIf="email.errors?.pattern">
+              {{ 'auth.login.form.input.email.valid_message' | translate }}
+            </p>
+          </ng-container>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-label class="label" for="input-password">
+            {{ 'auth.login.form.input.password.label' | translate }}
+          </ion-label>
+          <ion-input [(ngModel)]="authLoginReq.password" #password="ngModel" name="password" type="password"
+            id="input-password" placeholder="{{ 'auth.login.form.input.password.placeholder' | translate }}"
+            [required]="config.passwordRequired" [minlength]="config.passwordMinLength"
+            [maxlength]="config.passwordMaxLength"
+            [attr.aria-invalid]="password.invalid && password.touched ? true : null">
+          </ion-input>
+          <ng-container *ngIf="password.invalid && password.touched">
+            <ion-text color="danger" *ngIf="password.errors?.required">
+              {{ 'auth.login.form.input.password.required_message' | translate }}
+            </ion-text>
+            <ion-text color="danger" *ngIf="password.errors?.minlength || password.errors?.maxlength">
+              {{ 'auth.login.form.input.password.min_length_message' | translate: { min: config.passwordMinLength, max:
+              config.passwordMaxLength } }}
+            </ion-text>
+          </ng-container>
+        </ion-col>
+      </ion-row>
+
+      <ion-button type="submit" expand="block" fill="solid" shape="round" color="primary"
+        [disabled]="submitted || !form.valid">
+        {{ 'auth.login.form.button.login' | translate }}
+      </ion-button>
+    </form>
+
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="registerPage()" expand="block" fill="solid" shape="round">
+          {{ 'auth.login.form.button.register.link' | translate }}
+        </ion-button>
+        <ion-col size="12">
+          <ion-button (click)="requestPassPage()" expand="block" fill="outline" shape="round">
+            {{ 'auth.login.form.input.password.forgot_message' | translate }}
+          </ion-button>
+        </ion-col>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>

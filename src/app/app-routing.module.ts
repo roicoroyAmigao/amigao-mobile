@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './shop/shared/guards/auth.guard';
 
 const routes: Routes = [
   // {
@@ -17,16 +18,30 @@ const routes: Routes = [
   },
   {
     path: 'checkout',
-    loadChildren: () => import('./checkout/checkout.module').then( m => m.CheckoutPageModule)
+    loadChildren: () => import('./checkout/checkout.module').then(m => m.CheckoutPageModule)
   },
   {
     path: 'welcome',
-    loadChildren: () => import('./welcome/welcome.module').then( m => m.WelcomePageModule)
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./welcome/welcome.module').then(m => m.WelcomePageModule)
   },
   {
     path: 'product-details',
-    loadChildren: () => import('./shop/products-list/product-details/product-details.module').then( m => m.ProductDetailsPageModule)
-  }
+    loadChildren: () => import('./shop/products-list/product-details/product-details.module').then(m => m.ProductDetailsPageModule)
+  },
+  // AUTH
+  {
+    path: 'login',
+    loadChildren: () => import('./auth/login/login.module').then(m => m.LoginPageModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./auth/register/register.module').then(m => m.RegisterPageModule)
+  },
+  {
+    path: 'request-password',
+    loadChildren: () => import('./auth/request-password/request-password.module').then(m => m.RequestPasswordPageModule)
+  },
 ];
 @NgModule({
   imports: [
@@ -34,4 +49,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
