@@ -2,8 +2,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { ChangeDetectorRef, Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { AuthService } from 'src/app/shop/shared/services/auth.service';
-import { StrapiAuthConfig } from 'src/app/shop/shared/types/StrapiAuthConfig';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { StrapiAuthConfig } from 'src/app/shared/types/StrapiAuthConfig';
 
 @Component({
   selector: 'app-request-password',

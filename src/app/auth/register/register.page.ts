@@ -3,7 +3,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { AuthService } from 'src/app/shop/shared/services/auth.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-register',

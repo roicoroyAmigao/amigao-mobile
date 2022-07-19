@@ -22,8 +22,8 @@ import { NgxsResetPluginModule } from 'ngxs-reset-plugin';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { ComponentsModule } from './shop/shared/components/components.module';
-import { AuthInterceptor } from './shop/shared/interceptors/auth.interceptor';
+import { ComponentsModule } from './shared/components/components.module';
+import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');

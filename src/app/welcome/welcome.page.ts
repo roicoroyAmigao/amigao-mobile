@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NavigationService } from '../checkout/shared/services/navigation.service';
+import { AuthService } from '../shared/services/auth.service';
 
 
 @Component({
@@ -11,13 +13,23 @@ export class WelcomePage implements OnInit {
 
   constructor(
     private navigation: NavigationService,
+    protected authService: AuthService,
+    protected router: Router,
   ) { }
   ngOnInit() {
   }
-  goToCheckout(params){
+  goToCheckout(params) {
     this.navigation.navigateForwardParams('checkout', params);
   }
-  goToShop(){
+  goToShop() {
     this.navigation.navigateForward('shop/tabs/products-list');
+  }
+  logout(): void {
+    this.authService.logout().then(() => {
+      this.router.navigateByUrl('login');
+    });
+  }
+  profile() {
+    this.router.navigateByUrl('profile');
   }
 }

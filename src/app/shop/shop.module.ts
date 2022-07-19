@@ -6,10 +6,10 @@ import { ShopPageRoutingModule } from './shop-routing.module';
 import { ShopPage } from './shop.page';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
-import { ComponentsModule } from './shared/components/components.module';
+import { ComponentsModule } from '../shared/components/components.module';
 import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 import { NgxsModule } from '@ngxs/store';
-import { ShopState } from './shared/store/shop.state';
+import { ShopState } from '../shared/store/shop.state';
 
 @NgModule({
   imports: [

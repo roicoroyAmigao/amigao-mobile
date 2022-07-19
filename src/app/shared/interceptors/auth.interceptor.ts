@@ -7,6 +7,7 @@ import { catchError } from 'rxjs/operators';
 import { ToastController } from '@ionic/angular';
 import { IonStorageService } from '../services/ionstorage.service';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 
 
@@ -24,16 +25,25 @@ export class AuthInterceptor implements HttpInterceptor {
     ) { }
     intercept(request: HttpRequest<any>, next: HttpHandler):
         Observable<HttpEvent<any>> {
-        if (this.storage.getKeyAsObservable('token')) {
+        if (request.url.indexOf(environment.MEDUSA_API_BASE_PATH) === 0 || request.url.indexOf(environment.MEDUSA_API_BASE_PATH) === 0) {
             return this.storage.getKeyAsObservable('token').pipe(
-                mergeMap(token => {
-                    const clonedReq = this.addToken(request, token);
+                mergeMap(() => {
+                    const clonedReq = this.medusaRequest(request);
                     return next.handle(clonedReq);
                 }),
                 catchError((response: HttpErrorResponse) => throwError(response))
             );
+        } else {
+            if (this.storage.getKeyAsObservable('token')) {
+                return this.storage.getKeyAsObservable('token').pipe(
+                    mergeMap(token => {
+                        const clonedReq = this.addToken(request, token);
+                        return next.handle(clonedReq);
+                    }),
+                    catchError((response: HttpErrorResponse) => throwError(response))
+                );
+            }
         }
-        // return;
     }
     private addToken(request: HttpRequest<any>, token: any) {
         if (token) {
@@ -48,6 +58,13 @@ export class AuthInterceptor implements HttpInterceptor {
         if (!token) {
             this.router.navigateByUrl('login');
         }
+        return request;
+    }
+    private medusaRequest(request: HttpRequest<any>) {
+        request.clone({
+            setHeaders: {
+            }
+        });
         return request;
     }
 }

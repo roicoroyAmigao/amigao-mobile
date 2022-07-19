@@ -9,12 +9,12 @@ import { Observable, Subscription } from 'rxjs';
 import { NavigationService } from 'src/app/checkout/shared/services/navigation.service';
 import { FormActions } from 'src/app/checkout/shared/store/actions';
 import { MedusaDataService } from 'src/app/medusa-data.service';
-import { AddToCartComponent } from '../shared/components/add-to-cart/add-to-cart.component';
-import { ProductFormService } from '../shared/components/product-form/product-form.service';
-import { RegionService } from '../shared/components/region-form/region-service';
-import { ShopActions } from '../shared/store/shop.actions';
-import { ShopState } from '../shared/store/shop.state';
-import { UtilityService } from '../shared/utility.service';
+import { AddToCartComponent } from '../../shared/components/add-to-cart/add-to-cart.component';
+import { ProductFormService } from '../../shared/components/product-form/product-form.service';
+import { RegionService } from '../../shared/components/region-form/region-service';
+import { ShopActions } from '../../shared/store/shop.actions';
+import { ShopState } from '../../shared/store/shop.state';
+import { UtilityService } from '../../shared/utility.service';
 import { CartFacade } from '../shop.facade';
 
 @Component({

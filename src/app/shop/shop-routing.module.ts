@@ -12,6 +12,10 @@ const routes: Routes = [
         loadChildren: () => import('./products-list/products-list.module').then(m => m.ProductsListPageModule)
       },
       {
+        path: 'profile',
+        loadChildren: () => import('./profile/profile.module').then(m => m.ProfilePageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/products-list',
         pathMatch: 'full'

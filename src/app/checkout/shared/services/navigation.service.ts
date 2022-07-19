@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NavigationExtras } from '@angular/router';
 import { NavController } from '@ionic/angular';
-import { slideAnimation } from 'src/app/shop/shared/animations/nav-animation';
+import { slideAnimation } from 'src/app/shared/animations/nav-animation';
 
 export interface IInternalNavigationOptions {
     /** The soft URL to navigate to. */

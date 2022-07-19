@@ -2,8 +2,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { ChangeDetectorRef, Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { AuthService } from 'src/app/shop/shared/services/auth.service';
-import { StrapiAuthConfig } from 'src/app/shop/shared/types/StrapiAuthConfig';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { StrapiAuthConfig } from 'src/app/shared/types/StrapiAuthConfig';
 
 @Component({
   selector: 'app-login',
@@ -42,14 +42,10 @@ export class LoginPage implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    // this.rememberMe = false;
   }
 
   ngOnDestroy(): void { }
 
-  /**
-   * Login for local registered users
-   */
   public login(): void {
     this.errors = [];
     this.messages = [];
@@ -59,40 +55,11 @@ export class LoginPage implements OnInit, OnDestroy {
       .login(this.authLoginReq.email, this.authLoginReq.password)
       .then(() => {
         this.submitted = false;
-
-        this.router.navigateByUrl('home');
-        // console.log(this.authService.isAuthenticated);
-        // if (this.authService.isAuthenticated) {
-        //   this.router.navigateByUrl(this.authService.LoginRedirectUrl);
-        // }
+        this.router.navigateByUrl('welcome');
       })
       .catch((err: HttpErrorResponse) => {
         this.submitted = false;
         console.log(err);
-        if (err.status === 400) {
-          switch (err.error.data[0].messages[0].id) {
-            case 'Auth.form.error.confirmed':
-              this.errors.push(
-                this.translate.instant('errors.auth.login.email_verification')
-              );
-              break;
-            case 'Auth.form.error.blocked':
-              this.errors.push(
-                this.translate.instant('errors.auth.login.account_blocked')
-              );
-              break;
-
-            default:
-              this.errors.push(
-                this.translate.instant('errors.auth.login.password_or_email')
-              );
-              break;
-          }
-        } else {
-          this.errors.push(
-            this.translate.instant('errors.auth.login.undefined')
-          );
-        }
       });
   }
   registerPage() {

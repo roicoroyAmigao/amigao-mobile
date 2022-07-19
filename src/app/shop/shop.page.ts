@@ -4,7 +4,7 @@ import { MenuController, PopoverController } from '@ionic/angular';
 import { Store } from '@ngxs/store';
 import { FormActions } from '../checkout/shared/store/actions';
 import { MedusaDataService } from '../medusa-data.service';
-import { RegionFormComponent } from './shared/components/region-form/region-form.component';
+import { RegionFormComponent } from '../shared/components/region-form/region-form.component';
 
 @Component({
   selector: 'shop-tabs',

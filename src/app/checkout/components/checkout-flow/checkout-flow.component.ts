@@ -8,7 +8,7 @@ import { StripeElementsOptions } from '@stripe/stripe-js';
 import { StripePaymentElementComponent, StripeService } from 'ngx-stripe';
 import { Observable } from 'rxjs';
 import { MedusaDataService } from 'src/app/medusa-data.service';
-import { ShopState } from 'src/app/shop/shared/store/shop.state';
+import { ShopState } from 'src/app/shared/store/shop.state';
 import { FormActions } from '../../shared/store/actions';
 import { FormsState } from '../../shared/store/forms.state';
 

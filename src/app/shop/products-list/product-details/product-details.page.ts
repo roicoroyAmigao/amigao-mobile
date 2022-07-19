@@ -8,11 +8,11 @@ import { Select, Store } from '@ngxs/store';
 import { Observable, Subscription } from 'rxjs';
 import { Product } from 'src/app/checkout/shared/classes/product';
 import { NavigationService } from 'src/app/checkout/shared/services/navigation.service';
-import { ShopActions } from '../../shared/store/shop.actions';
-import { ShopState } from '../../shared/store/shop.state';
-import { CartQuantityService } from '../../shared/components/cart-counter/cart-couter.service';
-import { ProductFormService } from '../../shared/components/product-form/product-form.service';
-import { UtilityService } from '../../shared/utility.service';
+import { ShopActions } from '../../../shared/store/shop.actions';
+import { ShopState } from '../../../shared/store/shop.state';
+import { CartQuantityService } from '../../../shared/components/cart-counter/cart-couter.service';
+import { ProductFormService } from '../../../shared/components/product-form/product-form.service';
+import { UtilityService } from '../../../shared/utility.service';
 
 @Component({
   selector: 'app-product-details',

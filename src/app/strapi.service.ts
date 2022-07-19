@@ -5,23 +5,23 @@ import { TranslateService } from '@ngx-translate/core';
 import { Store } from '@ngxs/store';
 import { Token } from '@stripe/stripe-js';
 import { environment } from 'src/environments/environment';
-import { UserActions } from '../store/user/user.actions';
-import { IUser } from '../types/models/User';
-import { IReqAuthRegister } from '../types/requests/ReqAuthRegister';
-import { IReqPasswordReset } from '../types/requests/ReqPasswordReset';
-import { IReqUserUpdate } from '../types/requests/ReqUserUpdate';
-import { IResPasswordReset } from '../types/requests/ResPasswordReset';
-import { IResRequestPasswordReset } from '../types/requests/ResRequestPasswordReset';
-import { IResAuthLogin } from '../types/responses/ResAuthLogin';
-import { IResAuthRegister } from '../types/responses/ResAuthRegister';
-import { StrapiAuthConfig, StrapiAuthProviders } from '../types/StrapiAuthConfig';
-import { IonStorageService } from './ionstorage.service';
 import { lastValueFrom } from 'rxjs';
 import jwt_decode from 'jwt-decode';
+import { IonStorageService } from './shared/services/ionstorage.service';
+import { IUser } from './shared/types/models/User';
+import { IReqAuthRegister } from './shared/types/requests/ReqAuthRegister';
+import { IReqPasswordReset } from './shared/types/requests/ReqPasswordReset';
+import { IReqUserUpdate } from './shared/types/requests/ReqUserUpdate';
+import { IResPasswordReset } from './shared/types/requests/ResPasswordReset';
+import { IResRequestPasswordReset } from './shared/types/requests/ResRequestPasswordReset';
+import { IResAuthLogin } from './shared/types/responses/ResAuthLogin';
+import { IResAuthRegister } from './shared/types/responses/ResAuthRegister';
+import { StrapiAuthConfig, StrapiAuthProviders } from './shared/types/StrapiAuthConfig';
+
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class StrapiService {
   private apiUrl: string;
   private user: IUser;
   private token: string;
