@@ -83,7 +83,6 @@ export class AuthService {
     this.user = null;
     this.iosStorage.storageRemove('token');
     this.iosStorage.storageRemove('user');
-    // this.store.dispatch(new UserActions.Out());
   }
 
   /**
