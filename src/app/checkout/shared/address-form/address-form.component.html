@@ -2,22 +2,22 @@
   <div>
     <mat-form-field class="mr3">
       <mat-label>{{ 'ADDRESS.FIRST_NAME' | translate }}</mat-label>
-      <input matInput formControlName="firstName" required maxlength="30" autocomplete="given-name" />
-      <mat-error *ngIf="addressForm.get('firstName').hasError('required')">
+      <input matInput formControlName="first_name" required maxlength="30" autocomplete="given-name" />
+      <mat-error *ngIf="addressForm.get('first_name').hasError('required')">
         {{ 'ERRORS.REQUIRED' | translate }}
       </mat-error>
-      <mat-error *ngIf="addressForm.get('firstName').hasError('pattern')">
+      <mat-error *ngIf="addressForm.get('first_name').hasError('pattern')">
         {{ 'ERRORS.PATTERN' | translate }}
       </mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>{{ 'ADDRESS.LAST_NAME' | translate }}</mat-label>
-      <input matInput formControlName="lastName" required maxlength="30" autocomplete="family-name" />
-      <mat-error *ngIf="addressForm.get('lastName').hasError('required')">
+      <input matInput formControlName="last_name" required maxlength="30" autocomplete="family-name" />
+      <mat-error *ngIf="addressForm.get('last_name').hasError('required')">
         {{ 'ERRORS.REQUIRED' | translate }}
       </mat-error>
-      <mat-error *ngIf="addressForm.get('lastName').hasError('pattern')">
+      <mat-error *ngIf="addressForm.get('last_name').hasError('pattern')">
         {{ 'ERRORS.PATTERN' | translate }}
       </mat-error>
     </mat-form-field>
@@ -25,15 +25,15 @@
 
   <mat-form-field class="w-100">
     <mat-label>{{ 'ADDRESS.ADDRESS_LINE_1' | translate }}</mat-label>
-    <input matInput formControlName="addressLine1" required maxlength="120" autocomplete="address-line1" />
-    <mat-error *ngIf="addressForm.get('addressLine1').hasError('required')">
+    <input matInput formControlName="address_1" required maxlength="120" autocomplete="address-line1" />
+    <mat-error *ngIf="addressForm.get('address_1').hasError('required')">
       {{ 'ERRORS.REQUIRED' | translate }}
     </mat-error>
   </mat-form-field>
 
   <mat-form-field class="w-100">
     <mat-label>{{ 'ADDRESS.ADDRESS_LINE_2' | translate }}</mat-label>
-    <input matInput formControlName="addressLine2" maxlength="120" autocomplete="address-line2" />
+    <input matInput formControlName="address_2" maxlength="120" autocomplete="address_2" />
   </mat-form-field>
 
   <div>
@@ -46,25 +46,25 @@
     </mat-form-field>
 
     <mat-form-field class="mr3">
-      <mat-label>{{ 'ADDRESS.PROVINCE' | translate }}</mat-label>
-      <input matInput formControlName="province" required maxlength="30" autocomplete="address-level1" />
-      <mat-error *ngIf="addressForm.get('province').hasError('required')">
+      <mat-label>{{ 'country_code' | translate }}</mat-label>
+      <input matInput formControlName="country_code" required maxlength="30" autocomplete="country_code" />
+      <mat-error *ngIf="addressForm.get('country_code').hasError('required')">
         {{ 'ERRORS.REQUIRED' | translate }}
       </mat-error>
     </mat-form-field>
 
     <mat-form-field class="mr3">
-      <mat-label>{{ 'ADDRESS.COUNTRY' | translate }}</mat-label>
-      <input matInput formControlName="country" required maxlength="30" autocomplete="country" />
-      <mat-error *ngIf="addressForm.get('country').hasError('required')">
+      <mat-label>{{ 'phone' | translate }}</mat-label>
+      <input matInput formControlName="phone" required maxlength="30" autocomplete="phone" />
+      <mat-error *ngIf="addressForm.get('phone').hasError('required')">
         {{ 'ERRORS.REQUIRED' | translate }}
       </mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>{{ 'ADDRESS.POSTAL_CODE' | translate }}</mat-label>
-      <input matInput formControlName="postalCode" required maxlength="6" autocomplete="postal-code" />
-      <mat-error *ngIf="addressForm.get('postalCode').hasError('required')">
+      <input matInput formControlName="postal_code" required maxlength="6" autocomplete="postal_code" />
+      <mat-error *ngIf="addressForm.get('postal_code').hasError('required')">
         {{ 'ERRORS.REQUIRED' | translate }}
       </mat-error>
     </mat-form-field>

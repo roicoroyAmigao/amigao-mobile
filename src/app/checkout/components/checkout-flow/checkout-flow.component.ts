@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 /* eslint-disable @typescript-eslint/naming-convention */
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -9,8 +10,7 @@ import { StripePaymentElementComponent, StripeService } from 'ngx-stripe';
 import { Observable } from 'rxjs';
 import { MedusaDataService } from 'src/app/medusa-data.service';
 import { ShopState } from 'src/app/shared/store/shop.state';
-import { FormActions } from '../../shared/store/actions';
-import { FormsState } from '../../shared/store/forms.state';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-checkout-flow',
@@ -50,7 +50,8 @@ export class CheckoutFlowComponent implements OnInit {
     private dataService: MedusaDataService,
     private stripeService: StripeService,
     private store: Store,
-    private router: Router
+    private router: Router,
+    private http: HttpClient,
   ) { }
   ngOnInit() {
     this.dataService.getMedusaProducts().subscribe((medusaProducts: any) => {
@@ -60,16 +61,18 @@ export class CheckoutFlowComponent implements OnInit {
     this.dataService.getMedusaRegions().subscribe((medusaReg: any) => {
       this.regions = medusaReg.regions;
     });
-    this.medusaCart = this.medusaFullCart.subscribe((cart) => {
+    this.medusaFullCart.subscribe((cart) => {
       console.log('caart', cart);
       if (cart) {
         this.medusaCart = cart;
         console.log(this.medusaCart);
       }
     });
+    this.http.get(environment.BASE_PATH + '/api/users/me/').subscribe((res: any) => {
+      console.log(res);
+    });
   }
   backHome() {
-    // this.router.navigateByUrl('checkout/delivery');
     this.router.navigateByUrl('checkout/home');
   }
   createMedusaCart() {
@@ -77,8 +80,6 @@ export class CheckoutFlowComponent implements OnInit {
     if (this.region != null) {
       this.dataService.createMedusaCart(this.region).subscribe((medusaCart: any) => {
         console.log(medusaCart);
-        // this.cart = medusaCart.cart;
-        console.log(medusaCart.cart.id);
       });
     }
   }
@@ -112,7 +113,6 @@ export class CheckoutFlowComponent implements OnInit {
           resShippingOptions.shipping_options.forEach(element => {
             if (element.region_id === cart.cart.region_id && element.is_return === false) {
               this.shippingMethods.push(element);
-              console.log('this.shippingMethods', this.shippingMethods);
             }
           });
         });

@@ -16,11 +16,10 @@
 <ion-content>
 
   <ion-grid>
+
     <ion-row>
-      <ion-col size="12">
-        <ion-item class="ion-text-center">
-          <img [src]="userAvatar ? userAvatar : 'assets/shapes.svg'" />
-        </ion-item>
+      <ion-col size-sm="6" offset-sm="3">
+        <app-image-picker [userAvatar]="avatar" (imagePick)="onImagePicked($event)"></app-image-picker>
       </ion-col>
     </ion-row>
 
@@ -28,34 +27,42 @@
       <ion-col size="12" *ngIf="addressForm">
         <form (ngSubmit)="submitForm()" [formGroup]="addressForm">
           <section>
+            <ion-label>First name</ion-label>
             <ion-input type="text" [(ngModel)]="addressObj.first_name" formControlName="first_name" name="first_name">
             </ion-input>
           </section>
           <section>
+            <ion-label>Last name</ion-label>
             <ion-input type="text" [(ngModel)]="addressObj.last_name" formControlName="last_name" name="last_name">
             </ion-input>
           </section>
           <section>
+            <ion-label>First line address</ion-label>
             <ion-input type="text" [(ngModel)]="addressObj.address_1" formControlName="address_1" name="address_1">
             </ion-input>
           </section>
           <section>
+            <ion-label>Second line address</ion-label>
             <ion-input type="text" [(ngModel)]="addressObj.address_2" formControlName="address_2" name="address_2">
             </ion-input>
           </section>
           <section>
+            <ion-label>City</ion-label>
             <ion-input type="text" [(ngModel)]="addressObj.city" formControlName="city" name="city">
             </ion-input>
           </section>
           <section>
+            <ion-label>Country Code (medusa list)</ion-label>
             <ion-input type="text" [(ngModel)]="addressObj.country_code" formControlName="country_code"
               name="country_code"></ion-input>
           </section>
           <section>
+            <ion-label>Phone number</ion-label>
             <ion-input type="tel" [(ngModel)]="addressObj.phone" formControlName="phone" name="phone">
             </ion-input>
           </section>
           <section>
+            <ion-label>Post Code</ion-label>
             <ion-input type="text" [(ngModel)]="addressObj.postal_code" formControlName="postal_code"
               name="postal_code">
             </ion-input>

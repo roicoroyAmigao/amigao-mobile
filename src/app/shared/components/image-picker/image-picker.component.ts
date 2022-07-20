@@ -13,6 +13,8 @@ import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera
 import { Capacitor } from '@capacitor/core';
 import { Platform } from '@ionic/angular';
 import { Directory, Filesystem } from '@capacitor/filesystem';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-image-picker',
@@ -20,23 +22,28 @@ import { Directory, Filesystem } from '@capacitor/filesystem';
   styleUrls: ['./image-picker.component.scss']
 })
 export class ImagePickerComponent implements OnInit {
-  @ViewChild('filePicker', { static: false }) filePickerRef: ElementRef<HTMLInputElement>;
+  @ViewChild('formElementRef', { static: false }) formElementRef: ElementRef<HTMLFormElement>;
   @Output() imagePick = new EventEmitter<any>();
-  @Input() avatar: string;
+  @Input() userAvatar;
   selectedImage: string;
 
   constructor(
-    private platform: Platform
+    private platform: Platform,
+    private http: HttpClient,
   ) { }
 
   ngOnInit() {
-    console.log('picker', this.avatar);
-    if (this.avatar) {
-      this.selectedImage = this.avatar;
-    }
+    console.log('picker', this.userAvatar);
+    this.http.get(environment.BASE_PATH + '/api/users/me/').subscribe((res: any) => {
+      this.userAvatar = res.avatar?.url;
+      if (this.userAvatar) {
+        this.selectedImage = this.userAvatar;
+      }
+    });
   }
 
   async onPickImage() {
+    console.log('this.selectedImage');
     const capturedPhoto = await Camera.getPhoto({
       resultType: CameraResultType.Uri,
       source: CameraSource.Prompt,
@@ -47,7 +54,7 @@ export class ImagePickerComponent implements OnInit {
     this.imagePick.emit(savedPhoto.webviewPath);
     // this.selectedImage = await onLoadImage(savedPhoto);
     this.selectedImage = savedPhoto.webviewPath;
-    console.log(this.selectedImage);
+    console.log(savedPhoto);
   }
   private async savePicture(cameraPhoto: Photo) {
     const base64Data = await this.readAsBase64(cameraPhoto);

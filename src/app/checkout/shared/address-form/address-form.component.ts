@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable @angular-eslint/component-selector */
@@ -17,14 +18,14 @@ export class AddressFormComponent implements ControlValueAccessor, OnInit, OnDes
   @Input() touched: boolean;
 
   addressForm = this.fb.group({
-    firstName: [null, [Validators.required, Validators.pattern(nameRegex)]],
-    lastName: [null, [Validators.required, Validators.pattern(nameRegex)]],
-    addressLine1: [null, Validators.required],
-    addressLine2: [null],
+    first_name: [null, [Validators.required, Validators.pattern(nameRegex)]],
+    last_name: [null, [Validators.required, Validators.pattern(nameRegex)]],
+    address_1: [null, Validators.required],
+    address_2: [null],
     city: [null, Validators.required],
-    province: [null, Validators.required],
-    country: [null, Validators.required],
-    postalCode: [null, Validators.required]
+    country_code: [null, Validators.required],
+    phone: [null, Validators.required],
+    postal_code: [null, Validators.required]
   });
 
   private subscription = new Subscription();

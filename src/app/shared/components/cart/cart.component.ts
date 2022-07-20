@@ -42,41 +42,18 @@ export class CartComponent implements OnInit {
   medusaCart;
   selectedRegion: string;
   constructor(
-    private router: Router,
     public alertController: AlertController,
-    private store: Store,
-    private dataService: MedusaDataService,
-    private navigation: NavigationService,
-    private regionService: RegionService,
-    private menu: MenuController,
   ) {
-    console.log('item');
-    // this.store.dispatch(new ShopActions.GetFullCart())
-    this.medusaFullCart.subscribe((cart) => {
-      // console.log('caart', cart.id);
-      if (cart) {
-        this.medusaCart = cart;
-        console.log(this.medusaCart);
-      }
-    });
-    this.regionService.selectedRegionId.subscribe((selectedRegion) => {
-      this.selectedRegion = selectedRegion;
-      // console.log(this.selectedRegion);
-    });
+
   }
   ngOnInit() {
+  }
+  ionViewWillEnter() {
   }
   async placeOrder() {
     this.medusaFullCart.subscribe((cart) => {
       if (cart) {
-        this.medusaCart = cart?.items;
-        this.cartId = cart.id;
         console.log(cart);
-        if (this.cartId != null) {
-          this.menu.close().then(() => {
-            this.navigation.navigateForward('checkout/checkout-flow');
-          });
-        }
       }
     });
   }

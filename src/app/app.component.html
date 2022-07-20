@@ -8,10 +8,16 @@
     <ion-menu side="start" contentId="main-content" type="overlay">
       <ion-content class="ion-text-center ion-margin ion-padding-top">
         <ion-list id="inbox-list">
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
-            <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false">
-              <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
-              <ion-label>{{ p.title }}</ion-label>
+          <ion-menu-toggle auto-hide="false">
+            <div *ngFor="let p of appPages; let i = index">
+              <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false">
+                <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+                <ion-label>{{ p.title }}</ion-label>
+              </ion-item>
+            </div>
+            <ion-item routerDirection="root" [routerLink]="'login'" lines="none" detail="false">
+              <ion-icon slot="start" name='home'></ion-icon>
+              <ion-label>{{ 'Logout' }}</ion-label>
             </ion-item>
           </ion-menu-toggle>
         </ion-list>

@@ -17,6 +17,7 @@ import { IResRequestPasswordReset } from './shared/types/requests/ResRequestPass
 import { IResAuthLogin } from './shared/types/responses/ResAuthLogin';
 import { IResAuthRegister } from './shared/types/responses/ResAuthRegister';
 import { StrapiAuthConfig, StrapiAuthProviders } from './shared/types/StrapiAuthConfig';
+import { NavigationService } from './checkout/shared/services/navigation.service';
 
 @Injectable({
   providedIn: 'root'
@@ -32,9 +33,9 @@ export class StrapiService {
 
   constructor(
     private httpClient: HttpClient,
-    private handler: HttpBackend,
     private iosStorage: IonStorageService,
     private store: Store,
+    private navigation: NavigationService,
   ) {
   }
 
@@ -83,6 +84,7 @@ export class StrapiService {
     this.user = null;
     this.iosStorage.storageRemove('token');
     this.iosStorage.storageRemove('user');
+    this.navigation.navigatebackParams('login');
   }
 
   /**

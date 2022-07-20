@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { StrapiService } from './strapi.service';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -14,8 +15,12 @@ export class AppComponent {
 
   constructor(
     public alertController: AlertController,
+    protected strapiService: StrapiService,
   ) { }
 
   ionViewWillEnter() {
+  }
+  logout(): void {
+    this.strapiService.logout();
   }
 }

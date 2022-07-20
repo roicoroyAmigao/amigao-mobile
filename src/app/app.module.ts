@@ -52,9 +52,9 @@ export function createTranslateLoader(http: HttpClient) {
     }),
     NgxsFormPluginModule.forRoot(),
     NgxsResetPluginModule.forRoot(),
-    NgxsLoggerPluginModule.forRoot({ disabled: false }),
-    NgxsReduxDevtoolsPluginModule.forRoot({ disabled: environment.production }),
-    NgxsReduxDevtoolsPluginModule.forRoot({ disabled: false }),
+    NgxsLoggerPluginModule.forRoot({ disabled: true }),
+    NgxsReduxDevtoolsPluginModule.forRoot({ disabled: !environment.production }),
+    NgxsReduxDevtoolsPluginModule.forRoot({ disabled: true }),
     NgxsStoragePluginModule.forRoot({ key: ['forms', 'ShopState'] }),
     NgxStripeModule.forRoot(environment.STRIPE_KEY),
     ComponentsModule

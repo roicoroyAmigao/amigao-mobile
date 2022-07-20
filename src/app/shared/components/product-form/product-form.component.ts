@@ -109,9 +109,7 @@ export class ProductFormComponent implements OnInit {
     console.log(cartId, variantId, quantity);
     this.store.dispatch(new ShopActions.AddProductMedusaToCart(cartId, variantId, quantity)).subscribe((res) => {
       console.log('cc', res);
-      // this.dataService.initializePaymentSessions(this.cartId).subscribe((res) => {
-      //   this.navigation.navigateForward('checkout/start');
-      // });
+      this.navigation.navigateForward('checkout/checkout-flow');
     });
   }
   createCart(selectedRegion) {
