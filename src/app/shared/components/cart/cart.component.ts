@@ -43,6 +43,8 @@ export class CartComponent implements OnInit {
   selectedRegion: string;
   constructor(
     public alertController: AlertController,
+    private navigation: NavigationService,
+    private menu: MenuController,
   ) {
 
   }
@@ -54,6 +56,8 @@ export class CartComponent implements OnInit {
     this.medusaFullCart.subscribe((cart) => {
       if (cart) {
         console.log(cart);
+        this.menu.close();
+        this.navigation.navigateForward('checkout/checkout-flow');
       }
     });
   }

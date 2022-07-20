@@ -207,7 +207,7 @@ export class StrapiService {
   async requestUser(): Promise<IUser | HttpErrorResponse> {
     try {
       const res: IUser | HttpErrorResponse = (await lastValueFrom(
-        this.httpClient.get(this.apiUrl + '/users/me', { headers: this.headers })
+        this.httpClient.get(environment.BASE_PATH + '/api/users/me', { headers: this.headers })
       )) as IUser | HttpErrorResponse;
 
       return res;

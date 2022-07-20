@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable @angular-eslint/component-selector */
 import { Component } from '@angular/core';
 import { MenuController, PopoverController } from '@ionic/angular';

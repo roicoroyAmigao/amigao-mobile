@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/member-ordering */
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { AlertController, PopoverController } from '@ionic/angular';
@@ -108,8 +109,8 @@ export class ProductFormComponent implements OnInit {
   addProductToCart(cartId?, variantId?, quantity?) {
     console.log(cartId, variantId, quantity);
     this.store.dispatch(new ShopActions.AddProductMedusaToCart(cartId, variantId, quantity)).subscribe((res) => {
-      console.log('cc', res);
-      this.navigation.navigateForward('checkout/checkout-flow');
+      // console.log('cc', res);
+      // this.navigation.navigateForward('checkout/checkout-flow');
     });
   }
   createCart(selectedRegion) {
